@@ -14,6 +14,7 @@ Requisitos funcionais
 - Deve ser possível colocar o jogo em pausa
 - Deve ser possível retornar ao jogo pausado
 - Deve ser possível desligar a música
+- Deve ser possível voltar atrás 
 
 
 Requisitos não funcionais 
