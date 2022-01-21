@@ -6,7 +6,7 @@ Requisitos funcionais
 - Deve conter uma contagem de 3 segundos antes do jogo começar
 - Deve ser possível escolher opção maratona (modo infinito)
 - Deve ser possível escolher um nível
-- Deve ser possível passar nível após 8 bites (1 byte) colectados
+- Deve ser possível passar nível após 8 bits (1 byte) colectados
 - Deve ser possível movimentar o pac-man evitando colisão com paredes
 - Deve ser possível movimentar o pack-man com as 4 setas (jogador 1)
 - Deve ser possível movimentar o pack-man com as teclas aswd (lado esquerdo - baixo - cima -lado direito)
