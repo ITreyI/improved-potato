@@ -43,9 +43,9 @@ export default class Mapa {
                     this.desenharByte(contexto, linha, coluna, this.tamanho)
                 }
 
-                //Linhas para ver cada quadrado desenhado
-                contexto.strokeStyle = "yellow"
-                contexto.strokeRect(coluna * this.tamanho, linha * this.tamanho, this.tamanho, this.tamanho)
+                // //Linhas para ver cada quadrado desenhado
+                // contexto.strokeStyle = "yellow"
+                // contexto.strokeRect(coluna * this.tamanho, linha * this.tamanho, this.tamanho, this.tamanho)
 
             }
         }
