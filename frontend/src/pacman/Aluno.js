@@ -1,3 +1,5 @@
+import Movimento from "./movimento";
+
 export default class Aluno {
     constructor(x, y, tamanho, velocidade, espaço) {
         this.x = x;
@@ -6,6 +8,11 @@ export default class Aluno {
         this.velocidade = velocidade;
         this.espaço = espaço;
         this.carregarImagem();
+
+        this.agoraMovimento = null
+        this.pedirMovimento = null
+
+        document.addEventListener("keydown", this.teclaPressionada)
     }
 
     draw(contexto) {
@@ -28,5 +35,22 @@ export default class Aluno {
 
         this.alunoImagens = [alunoImagem1, alunoImagem2, alunoImagem3, alunoImagem4];
         this.alunoImagensIndex = 1
+    }
+
+    teclaPressionada = (e) => {
+        console.log(e.key)
+        if (e.key === "ArrowUp" || e.key === "w" || e.key === "W") {
+
+        }
+        if (e.key === "ArrowDown" || e.key === "s" || e.key === "S") {
+
+        }
+        if (e.key === "ArrowLeft" || e.key === "a" || e.key === "A") {
+
+        }
+        if (e.key === "ArrowRight" || e.key === "d" || e.key === "D") {
+
+        }
+
     }
 }
