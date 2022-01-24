@@ -22,7 +22,7 @@ export default function GameRender() {
 
         mapa.setCanvasTamanho(canvas);
 
-        setInterval(gameLoop, 10000)
+        setInterval(gameLoop, 1000 / 75)
 
     }, [])
 

@@ -2,7 +2,7 @@ export default class Mapa {
     constructor(tamanho) {
         this.tamanho = tamanho
         this.byte = new Image(32, 32);
-        this.byte.src = ""
+        this.byte.src = "/yellowDot.png"
 
         this.parede = new Image(32, 32);
         this.parede.src = "/wall.png"
@@ -11,14 +11,16 @@ export default class Mapa {
     }
     // 1 é parede, 0 é pontos
     mapaDoNivel = [
-        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,],
         [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
         [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
         [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
         [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
         [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
         [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
         [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
@@ -35,6 +37,8 @@ export default class Mapa {
                 espaço = this.mapaDoNivel[linha][coluna]
                 if (espaço === 1) {
                     this.desenharParede(contexto, linha, coluna, this.tamanho)
+                } else if (espaço === 0) {
+                    this.desenharByte(contexto, linha, coluna, this.tamanho)
                 }
 
             }
@@ -44,6 +48,9 @@ export default class Mapa {
     desenharParede(contexto, linha, coluna, size) {
         contexto.drawImage(this.parede, coluna * this.tamanho, linha * this.tamanho, size, size)
 
+    }
+    desenharByte(contexto, linha, coluna, size) {
+        contexto.drawImage(this.byte, coluna * this.tamanho, linha * this.tamanho, size, size)
     }
 
 
