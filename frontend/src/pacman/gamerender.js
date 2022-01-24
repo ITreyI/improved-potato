@@ -9,15 +9,22 @@ export default function GameRender() {
 
 
         const tamanho = 32;
+        const velocidade = 1;
+
         const canvas = jogo.current
         const contexto = canvas.getContext('2d');
         const mapa = new Mapa(tamanho);
-        contexto.beginPath();
-        contexto.arc(100, 75, 50, 0, 2 * Math.PI);
-        contexto.stroke();
+        //const aluno = mapa.getAluno(velocidade)
+
+
+        // contexto.beginPath();
+        // contexto.arc(100, 75, 50, 0, 2 * Math.PI);
+        // contexto.stroke();
+
 
         function gameLoop() {
             mapa.draw(contexto);
+            //aluno.draw(contexto)
         }
 
         mapa.setCanvasTamanho(canvas);
