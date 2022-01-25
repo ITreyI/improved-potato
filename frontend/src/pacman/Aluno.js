@@ -39,7 +39,7 @@ export default class Aluno {
     }
 
     teclaPressionada = (e) => {
-        console.log(e.pedirMovimento)
+        console.log(e.keyCode)
 
         if (e.keyCode === 38 || e.keyCode === 87) {
             if (this.agoraMovimento === Movimento.baixo) {
