@@ -1,23 +1,47 @@
 import Movimento from "./movimento";
 
 export default class Aluno {
-    constructor(x, y, tamanho, velocidade, espaço) {
+    constructor(x, y, tamanho, velocidade, espaço, mapa) {
         this.x = x;
         this.y = y;
         this.tamanho = tamanho;
         this.velocidade = velocidade;
         this.espaço = espaço;
+        this.mapa = mapa;
         this.carregarImagem();
 
         this.agoraMovimento = null
         this.pedirMovimento = null
 
+        this.movimentoTempo = 10;
+        this.movimentoContador = null;
+
+        this.alunoRotaçaoNormal = this.Rotaçao.drt
+
         document.addEventListener("keydown", this.teclaPressionada)
+    }
+    Rotaçao = {
+        drt: 0,
+        baixo: 1,
+        esq: 2,
+        cima: 3
     }
 
     draw(contexto) {
         this.mexe();
-        contexto.drawImage(this.alunoImagens[this.alunoImagensIndex], this.x, this.y, this.tamanho, this.tamanho)
+        this.animaçao();
+        this.apanhar();
+
+        const size = this.tamanho / 2
+
+        contexto.save();
+        contexto.translate(this.x + size, this.y + size);
+        contexto.rotate((this.alunoRotaçaoNormal * 90 * Math.PI / 180))
+        contexto.drawImage(this.alunoImagens[this.alunoImagensIndex], -size, -size, this.tamanho, this.tamanho)
+
+        contexto.restore();
+        //poe a imagem no sitio x e y com o tamanho no x e com o tamanho no y
+        //contexto.drawImage(this.alunoImagens[this.alunoImagensIndex], this.x, this.y, this.tamanho, this.tamanho)
 
     }
 
@@ -73,23 +97,63 @@ export default class Aluno {
     mexe() {
         if (this.agoraMovimento !== this.pedirMovimento) {
             if (Number.isInteger(this.x / this.tamanho) && Number.isInteger(this.y / this.tamanho)) {
-                this.agoraMovimento = this.pedirMovimento
+                if (!this.mapa.verificarColisao(this.x, this.y, this.pedirMovimento)) {
+                    this.agoraMovimento = this.pedirMovimento
+                }
             }
+        }
+
+        if (this.mapa.verificarColisao(this.x, this.y, this.agoraMovimento)) {
+            this.movimentoContador = null;
+            this.alunoImagensIndex = 1;
+            return;
+        }
+        else if (this.agoraMovimento != null && this.movimentoContador == null) {
+            this.movimentoContador = this.movimentoTempo;
         }
         switch (this.agoraMovimento) {
             case Movimento.cima:
                 this.y -= this.velocidade;
+                this.alunoRotaçaoNormal = this.Rotaçao.cima
+
                 break;
             case Movimento.baixo:
+                this.alunoRotaçaoNormal = this.Rotaçao.baixo
                 this.y += this.velocidade;
+
                 break;
             case Movimento.esq:
+                this.alunoRotaçaoNormal = this.Rotaçao.esq
                 this.x -= this.velocidade
+
                 break;
             case Movimento.drt:
+                this.alunoRotaçaoNormal = this.Rotaçao.drt
                 this.x += this.velocidade
+
+                break;
         }
 
+    }
+
+    animaçao() {
+        if (this.movimentoContador == null) {
+            return
+        }
+        this.movimentoContador--
+        if (this.movimentoContador === 0) {
+            this.movimentoContador = this.movimentoTempo
+            this.alunoImagensIndex++
+            if (this.alunoImagensIndex === this.alunoImagens.length) {
+                this.alunoImagensIndex = 0;
+
+            }
+        }
+    }
+    apanhar() {
+        if (this.mapa.apanharPonto(this.x, this.y)) {
+
+        }
     }
 
 }
