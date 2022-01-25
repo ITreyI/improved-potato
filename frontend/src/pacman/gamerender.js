@@ -16,6 +16,7 @@ export default function GameRender() {
         const mapa = new Mapa(tamanho);
         const aluno = mapa.getAluno(velocidade)
 
+        
 
         // contexto.beginPath();
         // contexto.arc(100, 75, 50, 0, 2 * Math.PI);
