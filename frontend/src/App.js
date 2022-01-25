@@ -9,8 +9,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/jogo" element={<GameRender />} />
-          <Route path="/interface" element={<Interface1 />} />
-          <Route path="/interface" element={<Interface2 />} />
+
         </Routes>
 
       </BrowserRouter>
@@ -20,3 +19,5 @@ function App() {
 }
 
 export default App;
+//<Route path="/interface" element={<Interface1 />} />
+//          <Route path="/interface" element=//{<Interface2 />} />
