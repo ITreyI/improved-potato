@@ -1,0 +1,15 @@
+@font-face {
+    font-family: CrackMan;
+    src: url(../../public/font-crackman/CrackMan.TTF);
+  }
+
+h1{
+    color:black;
+    font-size: 60px;
+    font-family: CrackMan;
+}
+
+button{
+    border-radius:5px;
+    size: 200px;
+}
