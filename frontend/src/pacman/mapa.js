@@ -44,8 +44,8 @@ export default class Mapa {
                 }
 
                 // //Linhas para ver cada quadrado desenhado
-                // contexto.strokeStyle = "yellow"
-                // contexto.strokeRect(coluna * this.tamanho, linha * this.tamanho, this.tamanho, this.tamanho)
+                contexto.strokeStyle = "yellow"
+                contexto.strokeRect(coluna * this.tamanho, linha * this.tamanho, this.tamanho, this.tamanho)
 
             }
         }
