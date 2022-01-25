@@ -14,7 +14,7 @@ export default class Mapa {
 
 
 
-    // 1 é parede, 0 é pontos, 5 o aluno
+    // 1 é parede, 0 é pontos, 5 o aluno, 3 é vazio
     mapaDoNivel = [
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
@@ -46,10 +46,13 @@ export default class Mapa {
                 } else if (espaço === 0) {
                     this.desenharByte(contexto, linha, coluna, this.tamanho)
                 }
+                else {
+                    this.desenharVazio(contexto, coluna, linha, this.tamanho)
+                }
 
                 // //Linhas para ver cada quadrado desenhado
-                contexto.strokeStyle = "yellow"
-                contexto.strokeRect(coluna * this.tamanho, linha * this.tamanho, this.tamanho, this.tamanho)
+                // contexto.strokeStyle = "yellow"
+                // contexto.strokeRect(coluna * this.tamanho, linha * this.tamanho, this.tamanho, this.tamanho)
 
             }
         }
@@ -61,6 +64,11 @@ export default class Mapa {
     }
     desenharByte(contexto, linha, coluna, size) {
         contexto.drawImage(this.byte, coluna * this.tamanho, linha * this.tamanho, size, size)
+    }
+
+    desenharVazio(contexto, coluna, linha, size) {
+        contexto.fillStyle = "black";
+        contexto.fillRect(coluna * this.tamanho, linha * this.tamanho, size, size)
     }
 
 
@@ -88,6 +96,9 @@ export default class Mapa {
     }
 
     verificarColisao(x, y, direçao) {
+        if (direçao == null) {
+            return
+        }
 
         if (Number.isInteger(x / this.tamanho) && Number.isInteger(y / this.tamanho)) {
             let linha = 0;
@@ -125,5 +136,17 @@ export default class Mapa {
             }
         }
         return false;
+    }
+
+    apanharPonto(x, y) {
+        const linha = y / this.tamanho
+        const coluna = x / this.tamanho;
+
+        if (Number.isInteger(linha) && Number.isInteger(coluna)) {
+            if (this.mapaDoNivel[linha][coluna] === 0) {
+                this.mapaDoNivel[linha][coluna] = 3
+
+            }
+        }
     }
 }
