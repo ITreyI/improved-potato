@@ -16,7 +16,7 @@ export default class Aluno {
     }
 
     draw(contexto) {
-        this.move();
+        this.mexe();
         contexto.drawImage(this.alunoImagens[this.alunoImagensIndex], this.x, this.y, this.tamanho, this.tamanho)
 
     }
@@ -39,44 +39,57 @@ export default class Aluno {
     }
 
     teclaPressionada = (e) => {
+        console.log(e.keyCode)
 
-        if (e.key === "ArrowUp" || e.key === "w" || e.key === "W") {
-            if (this.agoraMovimento === Movimento.baixo)
+        if (e.keyCode === 38 || e.keyCode === 87) {
+            if (this.agoraMovimento === Movimento.baixo) {
                 this.agoraMovimento = Movimento.cima
+            }
             this.pedirMovimento = Movimento.cima
 
         }
-        if (e.key === "ArrowDown" || e.key === "s" || e.key === "S") {
-            if (this.agoraMovimento === Movimento.cima)
+        if (e.keyCode === 40 || e.keyCode === 83) {
+            if (this.agoraMovimento === Movimento.cima) {
                 this.agoraMovimento = Movimento.baixo
+            }
             this.pedirMovimento = Movimento.baixo
 
         }
-        if (e.key === "ArrowLeft" || e.key === "a" || e.key === "A") {
-            if (this.agoraMovimento === Movimento.drt)
+        if (e.keyCode === 37 || e.keyCode === 65) {
+            if (this.agoraMovimento === Movimento.drt) {
                 this.agoraMovimento = Movimento.esq
+            }
             this.pedirMovimento = Movimento.esq
         }
-        if (e.key === "ArrowRight" || e.key === "d" || e.key === "D") {
-            if (this.agoraMovimento === Movimento.esq)
+        if (e.keyCode === 39 || e.keyCode === 68) {
+            if (this.agoraMovimento === Movimento.esq) {
                 this.agoraMovimento = Movimento.drt
+            }
             this.pedirMovimento = Movimento.drt
         }
 
     }
 
-    move() {
+    mexe() {
         if (this.agoraMovimento !== this.pedirMovimento) {
-            if (Number.isInteger(this.x / this.tamanho) && Number.isInteger(this.Y / this.tamanho)) {
+            if (Number.isInteger(this.x / this.tamanho) && Number.isInteger(this.y / this.tamanho)) {
                 this.agoraMovimento = this.pedirMovimento
             }
-
         }
         switch (this.agoraMovimento) {
             case Movimento.cima:
-                this.y -= this.velocidade
+                this.y -= this.velocidade;
                 break;
+            case Movimento.baixo:
+                this.y += this.velocidade;
+                break;
+            case Movimento.esq:
+                this.x -= this.velocidade
+                break;
+            case Movimento.drt:
+                this.x += this.velocidade
         }
 
     }
+
 }
