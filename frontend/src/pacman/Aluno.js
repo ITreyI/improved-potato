@@ -1,12 +1,13 @@
 import Movimento from "./movimento";
 
 export default class Aluno {
-    constructor(x, y, tamanho, velocidade, espaço) {
+    constructor(x, y, tamanho, velocidade, espaço, mapa) {
         this.x = x;
         this.y = y;
         this.tamanho = tamanho;
         this.velocidade = velocidade;
         this.espaço = espaço;
+        this.mapa = mapa;
         this.carregarImagem();
 
         this.agoraMovimento = null
@@ -73,8 +74,14 @@ export default class Aluno {
     mexe() {
         if (this.agoraMovimento !== this.pedirMovimento) {
             if (Number.isInteger(this.x / this.tamanho) && Number.isInteger(this.y / this.tamanho)) {
-                this.agoraMovimento = this.pedirMovimento
+                if (!this.mapa.verificarColisao(this.x, this.y, this.pedirMovimento)) {
+                    this.agoraMovimento = this.pedirMovimento
+                }
             }
+        }
+
+        if (this.mapa.verificarColisao(this.x, this.y, this.agoraMovimento)) {
+            return;
         }
         switch (this.agoraMovimento) {
             case Movimento.cima:
