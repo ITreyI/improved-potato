@@ -1,3 +1,29 @@
+@font-face {
+    font-family: CrackMan;
+    src: url(../../public/font-crackman/CrackMan.TTF);
+  }
+
 .button{
-    border: radius 15px;
+    border-radius:  55px;
+
 }
+
+.container {
+    height: 100px;
+    width: 100px;
+   
+   font-family:CrackMan ;
+   background-color: rgb(20, 20, 20);
+   color: white;
+   bottom: 20%;
+   left: 10%;
+  }
+  
+  .center {
+    margin: 10;
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
