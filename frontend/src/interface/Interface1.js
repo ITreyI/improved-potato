@@ -1,9 +1,14 @@
 import './Interface1.css'
 import { useNavigate } from "react-router-dom";
 import { useRef } from 'react';
-export default function Homepage(){
+import { useState } from "react"
+
+export default function Homepage(){     
+ const [som, setSom] = useState(true)
+
 let player = useRef(null)   
-    let navigate = useNavigate();
+let navigate = useNavigate();
+
     return( 
     <div>
         <img onClick= {() => setSom( (s) => !s)} src={som ? "https://img.icons8.com/ios-filled/50/000000/room-sound.png" : "https://img.icons8.com/ios-filled/50/000000/mute--v1.png" }></img>
