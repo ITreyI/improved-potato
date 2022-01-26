@@ -16,7 +16,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/jogo" element={<GameRender />} />
-          <Route path="/interface1" element={<Interface1 />} />
+          <Route path="/" element={<Interface1 />} />
           <Route path="/interface2" element={<Interface2 />} />
           <Route path="/menu" element={<Menu1 />} />
 

@@ -33,9 +33,11 @@ export default function GameRender() {
 
         function gameLoop() {
             mapa.draw(contexto);
-            aluno.draw(contexto, pause())
+            desenharFinal();
+            aluno.draw(contexto, pause(), profs)
             profs.forEach(prof => prof.draw(contexto, pause(), aluno))
             verificarGameOver();
+            veriicarVitoria();
         }
 
         function verificarGameOver() {
@@ -47,13 +49,43 @@ export default function GameRender() {
             }
         }
 
+        function veriicarVitoria() {
+            if (!vitoria) {
+                vitoria = mapa.ganhou();
+                if (vitoria) {
+                    //vitoriaSound.play()
+                }
+            }
+        }
+
         function eGameOver() {
             return profs.some(e => !aluno.boostActivo && e.colidiuCom(aluno))
         }
 
         function pause() {
-            return !aluno.primeiroMovimento || gameOver;
+            return !aluno.primeiroMovimento || gameOver || vitoria;
         }
+        function desenharFinal() {
+            if (gameOver || vitoria) {
+                let text = "Vitória";
+                if (gameOver) {
+                    text = "Perdeu";
+
+                }
+                contexto.fillStyle = "black";
+                contexto.fillRect(0, canvas.height / 3.2, canvas.width, 80);
+
+                contexto.font = "80 px comic sans";
+                const gradient = contexto.createLinearGradient(0, 0, canvas.width, 0)
+                gradient.addColorStop('0', 'magenta')
+                gradient.addColorStop('0.5', 'blue')
+                gradient.addColorStop('1.0', 'red')
+
+                contexto.fillStyle = gradient;
+                contexto.fillText(text, 10, canvas.height / 2)
+            }
+        }
+
 
         mapa.setCanvasTamanho(canvas);
 

@@ -18,6 +18,7 @@ export default class Aluno {
 
         this.grabSound = new Audio('/')
         this.boostSound = new Audio('/')
+        this.pegarProfsSound = new Audio('/')
 
         this.boostActivo = false;
         this.boostActivoAcabou = false;
@@ -38,7 +39,7 @@ export default class Aluno {
         cima: 3
     }
 
-    draw(contexto, pause) {
+    draw(contexto, pause, profs) {
         if (!pause) {
             this.mexe();
             this.animaçao();
@@ -46,6 +47,7 @@ export default class Aluno {
 
         this.apanhar();
         this.apanharPoder();
+        this.pegarProfs(profs);
 
         const size = this.tamanho / 2
 
@@ -195,6 +197,18 @@ export default class Aluno {
             }, 1000 * 3)
 
             this.temporizador.push(boostActivoAcabouTemporizador)
+        }
+    }
+
+    pegarProfs(profs) {
+        if (this.boostActivo) {
+            const colidiu = profs.filter((inimigo) => inimigo.colidiuCom(this));
+            colidiu.forEach(inimigo => {
+                profs.splice(profs.indexOf(inimigo), 1);
+                //criar som quando comer
+            });
+
+
         }
     }
 

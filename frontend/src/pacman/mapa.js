@@ -178,6 +178,13 @@ export default class Mapa {
         }
         return false;
     }
+    ganhou() {
+        return this.pontosFaltar() === 0;
+    }
+
+    pontosFaltar() {
+        return this.mapaDoNivel.flat().filter(w => w === 0).length
+    }
 
     apanharPonto(x, y) {
         const linha = y / this.tamanho;
