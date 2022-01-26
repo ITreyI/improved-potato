@@ -16,7 +16,7 @@ export default class Aluno {
         this.movimentoTempo = 10;
         this.movimentoContador = null;
 
-        this.grabSound = new Audio('/')
+        this.grabSound = new Audio('/sounds/pacman_chomp.wav')
         this.boostSound = new Audio('/')
         this.pegarProfsSound = new Audio('/')
 
@@ -50,7 +50,7 @@ export default class Aluno {
         this.pegarProfs(profs);
 
         const size = this.tamanho / 2
-
+        //faz a imagem rodar
         contexto.save();
         contexto.translate(this.x + size, this.y + size);
         contexto.rotate((this.alunoRotaçaoNormal * 90 * Math.PI / 180))
@@ -173,7 +173,7 @@ export default class Aluno {
     }
     apanhar() {
         if (this.mapa.apanharPonto(this.x, this.y)) {
-            // this.grabSound.play();
+            this.grabSound.play();
         }
     }
 
