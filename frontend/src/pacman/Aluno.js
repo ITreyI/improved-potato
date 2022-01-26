@@ -38,9 +38,12 @@ export default class Aluno {
         cima: 3
     }
 
-    draw(contexto) {
-        this.mexe();
-        this.animaçao();
+    draw(contexto, pause) {
+        if (!pause) {
+            this.mexe();
+            this.animaçao();
+        }
+
         this.apanhar();
         this.apanharPoder();
 

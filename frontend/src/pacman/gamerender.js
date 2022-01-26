@@ -17,6 +17,13 @@ export default function GameRender() {
         const aluno = mapa.getAluno(velocidade)
         const profs = mapa.getProfs(velocidade);
 
+        let gameOver = false;
+        let vitoria = false;
+
+        const gameOverSound = new Audio("/")
+        const vitoriaSound = new Audio("/")
+
+
 
 
         // contexto.beginPath();
@@ -26,12 +33,26 @@ export default function GameRender() {
 
         function gameLoop() {
             mapa.draw(contexto);
-            aluno.draw(contexto)
+            aluno.draw(contexto, pause())
             profs.forEach(prof => prof.draw(contexto, pause(), aluno))
+            verificarGameOver();
+        }
+
+        function verificarGameOver() {
+            if (!gameOver) {
+                gameOver = eGameOver();
+                if (gameOver) {
+                    gameOverSound.play()
+                }
+            }
+        }
+
+        function eGameOver() {
+            return profs.some(e => !aluno.boostActivo && e.colidiuCom(aluno))
         }
 
         function pause() {
-            return !aluno.primeiroMovimento
+            return !aluno.primeiroMovimento || gameOver;
         }
 
         mapa.setCanvasTamanho(canvas);
