@@ -27,7 +27,7 @@ export default function GameRender() {
         function gameLoop() {
             mapa.draw(contexto);
             aluno.draw(contexto)
-            profs.forEach(prof => prof.draw(contexto, pause()))
+            profs.forEach(prof => prof.draw(contexto, pause(), aluno))
         }
 
         function pause() {

@@ -14,16 +14,46 @@ export default class Prof {
         this.movimento = Math.floor(Math.random() * Object.keys(Movimento).length);
         this.movimentoTemporizadorPadrao = this.random(1, 3)
         this.movimentoTemporizador = this.movimentoTemporizadorPadrao
+
+        this.medoProfTemporizadorPadrao = 10;
+        this.medoProfTemporizador = this.medoProfTemporizadorPadrao
     }
 
 
-    draw(contexto, pause) {
+    draw(contexto, pause, aluno) {
         if (!pause) {
             this.move();
             this.mudançaDireçao()
         }
+        this.setImage(contexto, aluno)
         contexto.drawImage(this.image, this.x, this.y, this.tamanho, this.tamanho);
 
+    }
+
+    setImage(contexto, aluno) {
+        if (aluno.boostActivo) {
+            this.setImageBoostActivo(aluno)
+        } else {
+            this.image = this.normalProf
+        }
+        contexto.drawImage(this.image, this.x, this.y, this.tamanho, this.tamanho)
+    }
+
+    setImageBoostActivo(aluno) {
+        console.log(this.medoProfTemporizador)
+        if (aluno.boostActivoAcabou) {
+            this.medoProfTemporizador--;
+            if (this.medoProfTemporizador === 0) {
+                this.medoProfTemporizador = this.medoProfTemporizadorPadrao
+                if (this.image === this.medoProf) {
+                    this.image = this.medoProf2
+                } else {
+                    this.image = this.medoProf
+                }
+            }
+        } else {
+            this.image = this.medoProf
+        }
     }
 
     random(min, max) {

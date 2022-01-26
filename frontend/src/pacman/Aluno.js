@@ -17,6 +17,11 @@ export default class Aluno {
         this.movimentoContador = null;
 
         this.grabSound = new Audio('/')
+        this.boostSound = new Audio('/')
+
+        this.boostActivo = false;
+        this.boostActivoAcabou = false;
+        this.temporizador = [];
 
         this.primeiroMovimento = false;
 
@@ -169,7 +174,24 @@ export default class Aluno {
 
     apanharPoder() {
         if (this.mapa.apanharBatata(this.x, this.y)) {
-            //
+            //this.boostSound.play()
+            this.boostActivo = true;
+            this.boostActivoAcabou = false;
+            this.temporizador.forEach(tempo => clearTimeout(tempo));
+            this.temporizador = [];
+
+            let boostActivoTemporizador = setTimeout(() => {
+                this.boostActivo = false;
+                this.boostActivoAcabou = false
+            }, 1000 * 6);
+
+            this.temporizador.push(boostActivoTemporizador)
+
+            let boostActivoAcabouTemporizador = setTimeout(() => {
+                this.boostActivoAcabou = true;
+            }, 1000 * 3)
+
+            this.temporizador.push(boostActivoAcabouTemporizador)
         }
     }
 
