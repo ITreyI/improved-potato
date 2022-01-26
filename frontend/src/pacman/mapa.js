@@ -11,15 +11,21 @@ export default class Mapa {
 
         this.parede = new Image(32, 32);
         this.parede.src = "/wall.png"
+
+        this.boost = new Image()
+        this.boost.src = "/"
+
+        this.boostTemporizador = 30;
+        this.boostTemporizador = this.boostTemporizadorPadrao
     }
 
 
 
-    // 1 é parede, 0 é pontos, 5 o aluno, 3 é vazio, 9 prof
+    // 1 é parede, 0 é pontos, 5 o aluno, 3 é vazio, 9 prof, 7 boost
     mapaDoNivel = [
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
         [1, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
         [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1],
         [1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1],
@@ -29,7 +35,7 @@ export default class Mapa {
         [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
         [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
         [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
         [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     ]
@@ -46,6 +52,8 @@ export default class Mapa {
                     this.desenharParede(contexto, linha, coluna, this.tamanho)
                 } else if (espaço === 0) {
                     this.desenharByte(contexto, linha, coluna, this.tamanho)
+                } else if (espaço === 8) {
+                    this.desenharBoost(contexto, linha, coluna, this.tamanho)
                 }
                 else {
                     this.desenharVazio(contexto, coluna, linha, this.tamanho)
@@ -70,6 +78,10 @@ export default class Mapa {
     desenharVazio(contexto, coluna, linha, size) {
         contexto.fillStyle = "black";
         contexto.fillRect(coluna * this.tamanho, linha * this.tamanho, size, size)
+    }
+
+    desenharBoost(contexto, linha, coluna, tamanho) {
+
     }
 
 

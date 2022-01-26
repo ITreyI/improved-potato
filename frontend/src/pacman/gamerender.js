@@ -27,7 +27,11 @@ export default function GameRender() {
         function gameLoop() {
             mapa.draw(contexto);
             aluno.draw(contexto)
-            profs.forEach(prof => prof.draw(contexto))
+            profs.forEach(prof => prof.draw(contexto, pause()))
+        }
+
+        function pause() {
+            return !aluno.primeiroMovimento
         }
 
         mapa.setCanvasTamanho(canvas);
