@@ -1,10 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
 import GameRender from './pacman/gamerender';
-import Menu from './interface2/interface2';
+
 //import { Router, Routes } from 'react-router-dom'
 import Interface1 from './interface/Interface1';
+import Interface2 from './interface/Interface2';
+import Menu1 from './interface/Menu1';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Menu from './interface/Interface2';
 
 function App() {
   return (
@@ -14,7 +17,9 @@ function App() {
         <Routes>
           <Route path="/jogo" element={<GameRender />} />
           <Route path="/interface1" element={<Interface1 />} />
-          <Route path="/interface2" element={<Menu />} />
+          <Route path="/interface2" element={<Interface2 />} />
+          <Route path="/menu" element={<Menu1 />} />
+
         </Routes>
 
       </BrowserRouter>
