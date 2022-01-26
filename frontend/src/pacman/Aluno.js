@@ -16,6 +16,10 @@ export default class Aluno {
         this.movimentoTempo = 10;
         this.movimentoContador = null;
 
+        this.grabSound = new Audio('/')
+
+
+
         this.alunoRotaçaoNormal = this.Rotaçao.drt
 
         document.addEventListener("keydown", this.teclaPressionada)
@@ -152,7 +156,7 @@ export default class Aluno {
     }
     apanhar() {
         if (this.mapa.apanharPonto(this.x, this.y)) {
-
+            // this.grabSound.play();
         }
     }
 
