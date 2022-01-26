@@ -37,6 +37,7 @@ export default class Aluno {
         this.mexe();
         this.animaçao();
         this.apanhar();
+        this.apanharPoder();
 
         const size = this.tamanho / 2
 
@@ -163,6 +164,12 @@ export default class Aluno {
     apanhar() {
         if (this.mapa.apanharPonto(this.x, this.y)) {
             // this.grabSound.play();
+        }
+    }
+
+    apanharPoder() {
+        if (this.mapa.apanharBatata(this.x, this.y)) {
+            //
         }
     }
 

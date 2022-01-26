@@ -12,10 +12,12 @@ export default class Mapa {
         this.parede = new Image(32, 32);
         this.parede.src = "/wall.png"
 
-        this.boost = new Image()
-        this.boost.src = "/"
+        this.code = new Image()
+        this.code.src = "/pinkDot.png"
 
-        this.boostTemporizador = 30;
+        this.boost = this.code
+
+        this.boostTemporizadorPadrao = 20;
         this.boostTemporizador = this.boostTemporizadorPadrao
     }
 
@@ -52,7 +54,7 @@ export default class Mapa {
                     this.desenharParede(contexto, linha, coluna, this.tamanho)
                 } else if (espaço === 0) {
                     this.desenharByte(contexto, linha, coluna, this.tamanho)
-                } else if (espaço === 8) {
+                } else if (espaço === 7) {
                     this.desenharBoost(contexto, linha, coluna, this.tamanho)
                 }
                 else {
@@ -81,8 +83,18 @@ export default class Mapa {
     }
 
     desenharBoost(contexto, linha, coluna, tamanho) {
-
+        this.boostTemporizador--;
+        if (this.boostTemporizador === 0) {
+            this.boostTemporizador = this.boostTemporizadorPadrao;
+            if (this.boost === this.code) {
+                this.boost = this.byte
+            } else {
+                this.boost = this.code
+            }
+        }
+        contexto.drawImage(this.boost, coluna * this.tamanho, linha * this.tamanho, tamanho, tamanho)
     }
+
 
 
     //Consoante o tamanho do mapa do nivel, o canvas muda de tamanho
@@ -168,7 +180,7 @@ export default class Mapa {
     }
 
     apanharPonto(x, y) {
-        const linha = y / this.tamanho
+        const linha = y / this.tamanho;
         const coluna = x / this.tamanho;
 
         if (Number.isInteger(linha) && Number.isInteger(coluna)) {
@@ -179,5 +191,17 @@ export default class Mapa {
             }
         }
         return false;
+    }
+
+    apanharBatata(x, y) {
+        const linha = y / this.tamanho;
+        const coluna = x / this.tamanho;
+        if (Number.isInteger(linha) && Number.isInteger(coluna)) {
+            if (this.mapaDoNivel[linha][coluna] === 7) {
+                this.mapaDoNivel[linha][coluna] = 3
+                return true
+            }
+        }
+        return false
     }
 }
