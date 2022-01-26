@@ -23,9 +23,6 @@ export default function GameRender() {
         const gameOverSound = new Audio("/")
         const vitoriaSound = new Audio("/")
 
-
-
-
         // contexto.beginPath();
         // contexto.arc(100, 75, 50, 0, 2 * Math.PI);
         // contexto.stroke();
