@@ -1,4 +1,5 @@
 import Aluno from "./Aluno.js"
+import Prof from "./Prof.js"
 import Movimento from "./movimento.js";
 
 
@@ -14,7 +15,7 @@ export default class Mapa {
 
 
 
-    // 1 é parede, 0 é pontos, 5 o aluno, 3 é vazio
+    // 1 é parede, 0 é pontos, 5 o aluno, 3 é vazio, 9 prof
     mapaDoNivel = [
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
@@ -24,9 +25,9 @@ export default class Mapa {
         [1, 0, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1],
         [1, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1],
         [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 1],
         [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
         [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
         [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
         [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
@@ -94,6 +95,23 @@ export default class Mapa {
             }
         }
     }
+    getProfs(velocidade) {
+        const profs = [];
+
+        let linha = 0
+        let coluna = 0
+        let espaço;
+        for (linha = 0; linha < this.mapaDoNivel.length; linha++) {
+            for (coluna = 0; coluna < this.mapaDoNivel[linha].length; coluna++) {
+                espaço = this.mapaDoNivel[linha][coluna];
+                if (espaço === 9) {
+                    this.mapaDoNivel[linha][coluna] = 0;
+                    profs.push(new Prof(coluna * this.tamanho, linha * this.tamanho, this.tamanho, velocidade, espaço, this))
+                }
+            }
+        }
+        return profs;
+    }
 
     verificarColisao(x, y, direçao) {
         if (direçao == null) {
@@ -128,7 +146,6 @@ export default class Mapa {
                     coluna = x / this.tamanho
                     break;
             }
-            console.log(linha, coluna, this.mapaDoNivel)
             const espaço = this.mapaDoNivel[linha][coluna];
 
             if (espaço === 1) {
@@ -145,8 +162,10 @@ export default class Mapa {
         if (Number.isInteger(linha) && Number.isInteger(coluna)) {
             if (this.mapaDoNivel[linha][coluna] === 0) {
                 this.mapaDoNivel[linha][coluna] = 3
+                return true;
 
             }
         }
+        return false;
     }
 }

@@ -15,8 +15,9 @@ export default function GameRender() {
         const contexto = canvas.getContext('2d');
         const mapa = new Mapa(tamanho);
         const aluno = mapa.getAluno(velocidade)
+        const profs = mapa.getProfs(velocidade);
 
-        
+
 
         // contexto.beginPath();
         // contexto.arc(100, 75, 50, 0, 2 * Math.PI);
@@ -26,6 +27,7 @@ export default function GameRender() {
         function gameLoop() {
             mapa.draw(contexto);
             aluno.draw(contexto)
+            profs.forEach(prof => prof.draw(contexto))
         }
 
         mapa.setCanvasTamanho(canvas);
