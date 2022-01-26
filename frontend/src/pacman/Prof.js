@@ -12,14 +12,18 @@ export default class Prof {
         this.carregarImagens();
 
         this.movimento = Math.floor(Math.random() * Object.keys(Movimento).length);
-        this.movimentoTemporizadorPadrao = this.random(10, 50)
+        this.movimentoTemporizadorPadrao = this.random(1, 3)
         this.movimentoTemporizador = this.movimentoTemporizadorPadrao
     }
 
 
-    draw(contexto) {
+    draw(contexto, pause) {
+        if (!pause) {
+            this.move();
+            this.mudançaDireçao()
+        }
         contexto.drawImage(this.image, this.x, this.y, this.tamanho, this.tamanho);
-        this.move();
+
     }
 
     random(min, max) {
@@ -65,6 +69,25 @@ export default class Prof {
         this.medoProf2.src = "/scaredGhost2.png"
 
         this.image = this.normalProf
+
+    }
+
+    mudançaDireçao() {
+        let novaDireçao = null
+        this.movimentoTemporizador--;
+        if (this.movimentoTemporizador === 0) {
+            this.movimentoTemporizador = this.movimentoTemporizadorPadrao;
+            novaDireçao = Math.floor(Math.random() * Object.keys(Movimento).length)
+        }
+
+        if (novaDireçao !== null && this.movimento !== novaDireçao) {
+            if (Number.isInteger(this.x / this.tamanho) && Number.isInteger(this.y / this.tamanho)) {
+                if (!this.mapa.verificarColisao(this.x, this.y, novaDireçao)) {
+                    this.movimento = novaDireçao
+
+                }
+            }
+        }
 
     }
 }

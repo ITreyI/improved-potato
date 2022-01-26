@@ -18,6 +18,8 @@ export default class Aluno {
 
         this.grabSound = new Audio('/')
 
+        this.primeiroMovimento = false;
+
 
 
         this.alunoRotaçaoNormal = this.Rotaçao.drt
@@ -74,6 +76,7 @@ export default class Aluno {
                 this.agoraMovimento = Movimento.cima
             }
             this.pedirMovimento = Movimento.cima
+            this.primeiroMovimento = true;
 
         }
         if (e.keyCode === 40 || e.keyCode === 83) {
@@ -81,6 +84,7 @@ export default class Aluno {
                 this.agoraMovimento = Movimento.baixo
             }
             this.pedirMovimento = Movimento.baixo
+            this.primeiroMovimento = true;
 
         }
         if (e.keyCode === 37 || e.keyCode === 65) {
@@ -88,12 +92,14 @@ export default class Aluno {
                 this.agoraMovimento = Movimento.esq
             }
             this.pedirMovimento = Movimento.esq
+            this.primeiroMovimento = true;
         }
         if (e.keyCode === 39 || e.keyCode === 68) {
             if (this.agoraMovimento === Movimento.esq) {
                 this.agoraMovimento = Movimento.drt
             }
             this.pedirMovimento = Movimento.drt
+            this.primeiroMovimento = true;
         }
 
     }
