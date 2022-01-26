@@ -99,7 +99,7 @@ export default class Prof {
 
     carregarImagens() {
         this.normalProf = new Image()
-        this.normalProf.src = "/ghost.png"
+        this.normalProf.src = "/avatar Eloisa.png"
 
         this.medoProf = new Image()
         this.medoProf.src = "/scaredGhost.png"
