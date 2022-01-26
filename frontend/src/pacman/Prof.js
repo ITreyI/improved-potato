@@ -29,6 +29,15 @@ export default class Prof {
         contexto.drawImage(this.image, this.x, this.y, this.tamanho, this.tamanho);
 
     }
+    colidiuCom(aluno) {
+        const size = this.tamanho / 2;
+        if (this.x < aluno.x + size && this.x + size > aluno.x && this.y < aluno.y + size && this.y + size > aluno.y) {
+            return true
+        }
+        else {
+            return false
+        }
+    }
 
     setImage(contexto, aluno) {
         if (aluno.boostActivo) {
