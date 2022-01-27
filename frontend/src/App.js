@@ -24,6 +24,7 @@ function App() {
           <Route path="/menu" element={<Menu1 />} />
           <Route path="/contador" element={<Contador />} />
           <Route path="/menu2" element={<Menu2 />} />
+          <Route path="/jogo" element={<Contador/>}/>
 
         </Routes>
 
