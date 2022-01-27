@@ -203,6 +203,7 @@ export default class Mapa {
         if (Number.isInteger(linha) && Number.isInteger(coluna)) {
             if (this.mapaDoNivel[linha][coluna] === 0) {
                 this.mapaDoNivel[linha][coluna] = 3
+
                 return true;
 
             }

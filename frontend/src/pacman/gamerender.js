@@ -1,10 +1,11 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import Mapa from "./mapa"
 import './jogo.css'
 
 
 export default function GameRender() {
     const jogo = useRef()
+
     useEffect(() => {
 
 
@@ -50,11 +51,20 @@ export default function GameRender() {
         function gameLoop() {
             mapa.draw(contexto);
             desenharFinal();
+            desenharScore();
             aluno.draw(contexto, pause(), profs)
             profs.forEach(prof => prof.draw(contexto, pause(), aluno))
             verificarGameOver();
-            veriicarVitoria();
+            verificarVitoria();
+            console.log(aluno.score)
+
         }
+        function desenharScore() {
+            contexto.font = "16 px Arial";
+            contexto.fillStyle = "#0095DD";
+            contexto.fillText = ("Score: " + aluno.score, 8, 20);
+        }
+
 
         function verificarGameOver() {
             if (!gameOver) {
@@ -65,7 +75,7 @@ export default function GameRender() {
             }
         }
 
-        function veriicarVitoria() {
+        function verificarVitoria() {
             if (!vitoria) {
                 vitoria = mapa.ganhou();
                 if (vitoria) {
@@ -109,6 +119,8 @@ export default function GameRender() {
 
     }, [])
 
-    return (<div><canvas ref={jogo}></canvas></div >)
+    return (<div>
+        <canvas ref={jogo}></canvas>
+    </div >)
 
 }
