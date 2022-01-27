@@ -4,9 +4,11 @@ import Mapa from "./mapa"
 import './jogo.css'
 
 
+
 export default function GameRender() {
     const [som, setSom] = useState(false)
     const [audio, setAudio] = useState(new Audio("/sounds/pacman_beginning.wav"))
+    const [score, setScore] = useState()
     let player = useRef(null)
     const jogo = useRef()
 
@@ -22,15 +24,15 @@ export default function GameRender() {
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
             [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
             [1, 0, 0, 0, 3, 3, 3, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-            [1, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
             [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
             [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
             [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
             [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
             [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 8, 4, 0, 0, 0, 0, 1],
             [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+            [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
             [1, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
             [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -40,6 +42,7 @@ export default function GameRender() {
 
         const aluno = mapa.getAluno(velocidade)
         const profs = mapa.getProfs(velocidade);
+
 
         let gameOver = false;
         let vitoria = false;
@@ -60,7 +63,13 @@ export default function GameRender() {
             profs.forEach(prof => prof.draw(contexto, pause(), aluno))
             verificarGameOver();
             verificarVitoria();
-            console.log(aluno.score)
+            sendScore();
+
+        }
+        function sendScore() {
+            let send = aluno.sendScore()
+            return send
+
 
         }
         function desenharScore() {
@@ -74,7 +83,7 @@ export default function GameRender() {
             if (!gameOver) {
                 gameOver = eGameOver();
                 if (gameOver) {
-                    gameOverSound.play()
+                    //gameOverSound.play()
                 }
             }
         }
@@ -106,7 +115,7 @@ export default function GameRender() {
                 contexto.fillStyle = "black";
                 contexto.fillRect(0, canvas.height / 3.2, canvas.width, 80);
 
-                contexto.font = "80 px comic sans";
+
                 const gradient = contexto.createLinearGradient(0, 0, canvas.width, 0)
                 gradient.addColorStop('0', 'magenta')
                 gradient.addColorStop('0.5', 'blue')
@@ -114,6 +123,7 @@ export default function GameRender() {
 
                 contexto.fillStyle = gradient;
                 contexto.fillText(text, 10, canvas.height / 2)
+                //fillText(text, 10, canvas.height / 2)
             }
         }
 
@@ -124,13 +134,19 @@ export default function GameRender() {
 
     }, [])
 
-    return (<div><canvas ref={jogo}></canvas>
+    return (<div>
+        <canvas ref={jogo}></canvas>
 
+        <audio ref={player} src="/sounds/pacman_beginning.wav">
 
-        <audio ref={player} src="/sounds/pacman_beginning.wav"></audio>
+        </audio>
         <div>
             <a onClick={() => som ? audio.play() : audio.pause()} >{<img onClick={() => setSom((s) => !s)} src={som ? "https://img.icons8.com/ios-filled/50/000000/room-sound.png" : "https://img.icons8.com/ios-filled/50/000000/mute--v1.png"}></img>}</a>
 
-        </div></div >)
+            <h1>{score}</h1>
+
+
+        </div>
+    </div >)
 
 }
