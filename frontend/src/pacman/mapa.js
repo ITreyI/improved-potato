@@ -5,6 +5,7 @@ import Movimento from "./movimento.js";
 
 export default class Mapa {
     constructor(tamanho, mapaDoNivel) {
+        console.log(mapaDoNivel)
         this.mapaDoNivel = mapaDoNivel
         this.tamanho = tamanho
         this.byte = new Image(32, 32);
@@ -139,7 +140,7 @@ export default class Mapa {
                 espaço = this.mapaDoNivel[linha][coluna];
                 if (espaço === 9) {
                     this.mapaDoNivel[linha][coluna] = 0;
-                    profs.push(new Prof(coluna * this.tamanho, linha * this.tamanho, this.tamanho, velocidade, espaço, this, espaço))
+                    profs.push(new Prof(coluna * this.tamanho, linha * this.tamanho, this.tamanho, velocidade, espaço, this))
                 }
                 if (espaço === 8) {
                     this.mapaDoNivel[linha][coluna] = 0;
