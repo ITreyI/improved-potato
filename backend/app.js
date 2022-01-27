@@ -9,14 +9,12 @@ app.listen(port, () => console.log(`À escuta em http://localhost:${port}`))
 
 
     app.post("/user",(req,res) => {
-           const id = req.body
-        const url = 'https://jsonplaceholder.typicode.com/todos/1'
-        const response = await fetch(url)
-       const json = await response.json()
-    }
+        const id = req.body
+        
+    )}
 
     app.get("/user",(req,res) => {
-        res.send(`Hello, ${req.params.name}`)
+        
     })
 
     app.get("/user/:id",(req,res) => {
