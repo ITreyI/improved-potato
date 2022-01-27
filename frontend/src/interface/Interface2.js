@@ -27,7 +27,7 @@ export default function Interface2() {
         <h1 class= "main">BYTES4FUN</h1>
         <input      placeholder="Insira o seu nome de jogador ..." type="text" id="tag" class="caixa"></input>
         
-        <button className="entrar-pushable" role="button" onClick={() => handleClick(navigate(`/contador`))}>
+        <button className="entrar-pushable" role="button" onClick={() => handleClick(navigate(`/Menu2`))}>
                 <span className="entrar-shadow"></span>
                 <span className="entrar-edge"></span>
                 <span className="entrar-front text">
