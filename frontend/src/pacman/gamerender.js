@@ -122,7 +122,7 @@ export default function GameRender() {
                 gradient.addColorStop('1.0', 'red')
 
                 contexto.fillStyle = gradient;
-                contexto.fillText(text, 10, canvas.height / 2)
+                //contexto.fillText(text, 10, canvas.height / 2)
                 //fillText(text, 10, canvas.height / 2)
             }
         }

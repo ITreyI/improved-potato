@@ -5,22 +5,22 @@ const port = process.env.PORT ?? 3000
 app.use(express.json())
 app.listen(port, () => console.log(`À escuta em http://localhost:${port}`))
 
- 
 
 
-    app.post("/user",(req,res) => {
-        const id = req.body
-        
-    )}
 
-    app.get("/user",(req,res) => {
-        
-    })
+    // app.post("/user",(req,res) => {
+    //     const id = req.body
 
-    app.get("/user/:id",(req,res) => {
+    // )}
 
-    })
-  
+    // app.get("/user",(req,res) => {
+
+    // })
+
+    // app.get("/user/:id",(req,res) => {
+
+    // })
+
 
 
 
