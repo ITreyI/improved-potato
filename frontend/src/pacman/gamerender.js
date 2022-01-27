@@ -1,9 +1,13 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
+import { useState } from "react"
 import Mapa from "./mapa"
 import './jogo.css'
 
 
 export default function GameRender() {
+    const [som, setSom] = useState(false)
+    const [audio, setAudio] = useState(new Audio("/sounds/pacman_beginning.wav"))
+    let player = useRef(null)
     const jogo = useRef()
 
     useEffect(() => {
@@ -98,6 +102,7 @@ export default function GameRender() {
                     text = "Perdeu";
 
                 }
+               
                 contexto.fillStyle = "black";
                 contexto.fillRect(0, canvas.height / 3.2, canvas.width, 80);
 
@@ -119,8 +124,13 @@ export default function GameRender() {
 
     }, [])
 
-    return (<div>
-        <canvas ref={jogo}></canvas>
-    </div >)
+    return (<div><canvas ref={jogo}></canvas>
+      
+
+            <audio ref={player} src="/sounds/pacman_beginning.wav"></audio>
+            <div>
+                <a onClick={() => som ? audio.play() : audio.pause()} >{<img onClick={() => setSom((s) => !s)} src={som ? "https://img.icons8.com/ios-filled/50/000000/room-sound.png" : "https://img.icons8.com/ios-filled/50/000000/mute--v1.png"}></img>}</a>
+
+            </div></div >)
 
 }
