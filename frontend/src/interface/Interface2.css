@@ -5,13 +5,38 @@
     width: 400px;
 
 }
-#main{
+.main{
     text-align: center;
     color:black;
-    text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
-    top: 200px;
+    text-shadow: 0px 0px 60x rgba(255, 255, 255, 1);
+    top: 100px;
+    position: absolute;
+    height: 300px;
+    width: 400px;
 }
 
 .caixa{
-    width: 25px;
+    width: 15px;
+    font-family: PacMan;
+    border-radius: 25px;
+    height: 40px;
+    text-align: center;
+    position: relative;
+    top: 200px;
+
+
+}
+
+.entrar{
+    border-radius: 5px;
+    top: 300px;
+    font-family: PacMan;
+    position: fixed;
+    width: 50px;
+    height: 40px;
+    
+}
+
+.soundicon{
+    height: 20px;
 }

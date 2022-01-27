@@ -3,20 +3,60 @@
     src: url(../../public/font-crackman/CrackMan.TTF);
   }
 
-.button{
-    border-radius:  55px;
-
+  .soundicon{
+    height: 20px;
+    position: relative;
+    left: 250px;
+    display:none;
 }
-
-.container {
-    height: 100px;
-    width: 100px;
-   
+.container1 {
+    height: 150px;
+    width: 150px;
+   right: 100px;
    font-family:CrackMan ;
    background-color: rgb(20, 20, 20);
    color: white;
    bottom: 20%;
    left: 10%;
+   position: relative;
+   top:70px;
+  }
+  .container2 {
+    height: 150px;
+    width: 150px;
+   right: 100px;
+   font-family:CrackMan ;
+   background-color: rgb(20, 20, 20);
+   color: white;
+   bottom: 20%;
+   left: 10%;
+   position: relative;
+   top: 80px;
+  }
+  .container3 {
+    height: 150px;
+    width: 150px;
+   right:100px;
+   font-family:CrackMan ;
+   background-color: rgb(20, 20, 20);
+   color: white;
+   bottom: 20%;
+   left: 10%;
+   position: relative;
+   top: 90px;
+  }
+  .container4 {
+    height: 150px;
+    width: 150px;
+   right:100px;
+   top:100px;
+   font-family:CrackMan ;
+   background-color: rgb(20, 20, 20);
+   color: white;
+   bottom: 20%;
+   left: 10%;
+   position: relative;
+   
   }
   
   .center {

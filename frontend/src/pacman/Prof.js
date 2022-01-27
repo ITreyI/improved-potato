@@ -102,7 +102,7 @@ export default class Prof {
         this.normalProf.src = "/Eloisa pixel avatar.png"
 
         this.medoProf = new Image()
-        this.medoProf.src = "/scaredGhost.png"
+        this.medoProf.src = "/Fernando Pixel avatar.png"
 
         this.medoProf2 = new Image()
         this.medoProf2.src = "/scaredGhost2.png"
