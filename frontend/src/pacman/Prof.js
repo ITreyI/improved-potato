@@ -1,13 +1,15 @@
+import Mapa from "./mapa";
 import Movimento from "./movimento";
 
 export default class Prof {
-    constructor(x, y, tamanho, velocidade, espaço, mapa) {
+    constructor(x, y, tamanho, velocidade, espaço, mapa, id) {
         this.x = x;
         this.y = y;
         this.tamanho = tamanho;
         this.velocidade = velocidade;
         this.espaço = espaço;
         this.mapa = mapa;
+        this.id = id
 
         this.carregarImagens();
 
@@ -42,14 +44,21 @@ export default class Prof {
     setImage(contexto, aluno) {
         if (aluno.boostActivo) {
             this.setImageBoostActivo(aluno)
-        } else {
+        }
+        if (this.id === 9) {
             this.image = this.normalProf
         }
+        if (this.id === 8) {
+            this.image = this.normalProf2
+        }
+        if (this.id === 4) {
+            this.image = this.normalProf3
+        }
         contexto.drawImage(this.image, this.x, this.y, this.tamanho, this.tamanho)
+
     }
 
     setImageBoostActivo(aluno) {
-        console.log(this.medoProfTemporizador)
         if (aluno.boostActivoAcabou) {
             this.medoProfTemporizador--;
             if (this.medoProfTemporizador === 0) {
@@ -101,15 +110,21 @@ export default class Prof {
         this.normalProf = new Image()
         this.normalProf.src = "/Eloisa pixel avatar.png"
 
-       
+        this.normalProf2 = new Image()
+        this.normalProf2.src = "/Fernando Pixel avatar.png"
+
+        this.normalProf3 = new Image()
+        this.normalProf3.src = "/Rafael Avatar.jpg"
 
         this.medoProf = new Image()
-        this.medoProf.src = "/Fernando Pixel avatar.png"
+        this.medoProf.src = "/scaredGhost1.png"
 
         this.medoProf2 = new Image()
         this.medoProf2.src = "/scaredGhost2.png"
 
         this.image = this.normalProf
+        this.image2 = this.normalProf2
+        this.image3 = this.normalProf3
 
     }
 

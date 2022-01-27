@@ -27,7 +27,7 @@ export default class Mapa {
 
 
 
-    // 1 é parede, 0 é pontos, 5 o aluno, 3 é vazio, 9 prof, 7 boost
+    // 1 é parede, 0 é pontos, 5 o aluno, 3 é vazio, 9,8 prof, 7 boost
     // mapaDoNivel = [
     //     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     //     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
@@ -37,7 +37,7 @@ export default class Mapa {
     //     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
     //     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
     //     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    //     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 1],
+    //     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 8, 0, 0, 0, 0, 0, 1],
     //     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
     //     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
     //     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 1],
@@ -141,6 +141,14 @@ export default class Mapa {
                 if (espaço === 9) {
                     this.mapaDoNivel[linha][coluna] = 0;
                     profs.push(new Prof(coluna * this.tamanho, linha * this.tamanho, this.tamanho, velocidade, espaço, this))
+                }
+                if (espaço === 8) {
+                    this.mapaDoNivel[linha][coluna] = 0;
+                    profs.push(new Prof(coluna * this.tamanho, linha * this.tamanho, this.tamanho, velocidade, espaço, this, espaço))
+                }
+                if (espaço === 4) {
+                    this.mapaDoNivel[linha][coluna] = 0;
+                    profs.push(new Prof(coluna * this.tamanho, linha * this.tamanho, this.tamanho, velocidade, espaço, this, espaço))
                 }
             }
         }
