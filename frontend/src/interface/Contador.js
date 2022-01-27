@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom";
 import { useRef } from 'react';
 import "./contador.css"
@@ -7,7 +7,20 @@ import "./contador.css"
 export default function Contador() {
     const [som, setSom] = useState(true)
     let player = useRef(null)
-    let navigate = useNavigate();
+    const navigate = useNavigate();
+    useEffect(
+    
+        () => {
+            setTimeout(function() {
+        navigate("/jogo")
+      }, 3000);
+        }, []
+    )
+
+    
+    
+
+
     return (<div>
         <div className="wrapper">
             <span className="circle circle-1"></span>
