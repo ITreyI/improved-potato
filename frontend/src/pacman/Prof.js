@@ -42,35 +42,38 @@ export default class Prof {
     }
 
     setImage(contexto, aluno) {
+
         if (aluno.boostActivo) {
             this.setImageBoostActivo(aluno)
-        }
-        if (this.id === 9) {
-            this.image = this.normalProf
-        }
-        if (this.id === 8) {
-            this.image = this.normalProf2
-        }
-        if (this.id === 4) {
-            this.image = this.normalProf3
+        } else {
+            if (this.id === 9) {
+                this.image.src = this.normalProf.src
+            }
+            if (this.id === 8) {
+                this.image.src = this.normalProf2.src
+            }
+            if (this.id === 4) {
+                this.image.src = this.normalProf3.src
+            }
         }
         contexto.drawImage(this.image, this.x, this.y, this.tamanho, this.tamanho)
-
     }
 
     setImageBoostActivo(aluno) {
+
         if (aluno.boostActivoAcabou) {
             this.medoProfTemporizador--;
             if (this.medoProfTemporizador === 0) {
                 this.medoProfTemporizador = this.medoProfTemporizadorPadrao
-                if (this.image === this.medoProf) {
-                    this.image = this.medoProf2
+                if (this.image.src === this.medoProf.src) {
+                    this.image.src = this.medoProf2.src
                 } else {
-                    this.image = this.medoProf
+                    this.image.src = this.medoProf.src
                 }
             }
         } else {
-            this.image = this.medoProf
+
+            this.image.src = this.medoProf.src
         }
     }
 
@@ -117,14 +120,13 @@ export default class Prof {
         this.normalProf3.src = "/Rafael Avatar.jpg"
 
         this.medoProf = new Image()
-        this.medoProf.src = "/scaredGhost1.png"
+        this.medoProf.src = "/scaredGhost.png"
 
         this.medoProf2 = new Image()
         this.medoProf2.src = "/scaredGhost2.png"
 
-        this.image = this.normalProf
-        this.image2 = this.normalProf2
-        this.image3 = this.normalProf3
+        this.image = new Image()
+
 
     }
 
