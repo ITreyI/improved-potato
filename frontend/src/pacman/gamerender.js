@@ -9,6 +9,7 @@ export default function GameRender() {
     const [audio, setAudio] = useState(new Audio("/sounds/pacman_beginning.wav"))
     let player = useRef(null)
     const jogo = useRef()
+
     useEffect(() => {
 
 
@@ -54,11 +55,20 @@ export default function GameRender() {
         function gameLoop() {
             mapa.draw(contexto);
             desenharFinal();
+            desenharScore();
             aluno.draw(contexto, pause(), profs)
             profs.forEach(prof => prof.draw(contexto, pause(), aluno))
             verificarGameOver();
-            veriicarVitoria();
+            verificarVitoria();
+            console.log(aluno.score)
+
         }
+        function desenharScore() {
+            contexto.font = "16 px Arial";
+            contexto.fillStyle = "#0095DD";
+            contexto.fillText = ("Score: " + aluno.score, 8, 20);
+        }
+
 
         function verificarGameOver() {
             if (!gameOver) {
@@ -69,7 +79,7 @@ export default function GameRender() {
             }
         }
 
-        function veriicarVitoria() {
+        function verificarVitoria() {
             if (!vitoria) {
                 vitoria = mapa.ganhou();
                 if (vitoria) {

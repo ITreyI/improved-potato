@@ -1,5 +1,6 @@
 import Movimento from "./movimento";
 
+
 export default class Aluno {
     constructor(x, y, tamanho, velocidade, espaço, mapa) {
         this.x = x;
@@ -29,6 +30,8 @@ export default class Aluno {
 
 
         this.alunoRotaçaoNormal = this.Rotaçao.drt
+
+        this.score = 0;
 
         document.addEventListener("keydown", this.teclaPressionada)
     }
@@ -174,11 +177,13 @@ export default class Aluno {
     apanhar() {
         if (this.mapa.apanharPonto(this.x, this.y)) {
             this.grabSound.play();
+            this.score += 100
         }
     }
 
     apanharPoder() {
         if (this.mapa.apanharBatata(this.x, this.y)) {
+            this.score += 500
             //this.boostSound.play()
             this.boostActivo = true;
             this.boostActivoAcabou = false;
