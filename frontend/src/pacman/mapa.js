@@ -7,13 +7,15 @@ export default class Mapa {
     constructor(tamanho) {
         this.tamanho = tamanho
         this.byte = new Image(32, 32);
-        this.byte.src = "/yellowDot.png"
+        this.byte.src = "/0.png"
+
+
 
         this.parede = new Image(32, 32);
         this.parede.src = "/wall.png"
 
         this.code = new Image()
-        this.code.src = "/pinkDot.png"
+        this.code.src = "/1.png"
 
         this.boost = this.code
 
