@@ -8,6 +8,12 @@ export default function Interface2() {
     const [audio, setAudio] = useState(new Audio("/sounds/pacman_beginning.wav"))
     let player = useRef(null)  
     let navigate = useNavigate();
+    const handleClick= ()=> {
+        fetch
+        const url = 'https://jsonplaceholder.typicode.com/todos/1'
+        const response = await fetch(url)
+       const json = await response.json()
+    }
     return (
     <div>
          <div className="tudo">
@@ -19,7 +25,7 @@ export default function Interface2() {
         <h1 class= "main">BYTES4FUN</h1>
         <input  placeholder="Insira o seu nome de jogador ..." type="text" id="tag" class="caixa"></input>
         
-        <button className="entrar-pushable" role="button" onClick={() => navigate(`/menu`)}>
+        <button className="entrar-pushable" role="button" onClick={() => handleClick()}>
                 <span className="entrar-shadow"></span>
                 <span className="entrar-edge"></span>
                 <span className="entrar-front text">
