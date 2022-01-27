@@ -22,8 +22,8 @@ function App() {
           <Route path="/" element={<Interface1 />} />
           <Route path="/interface2" element={<Interface2 />} />
           <Route path="/menu" element={<Menu1 />} />
-          <Route path="/contador" element={<Contador/>} />
-          <Route path="/menu" element={<Menu2 />} />
+          <Route path="/contador" element={<Contador />} />
+          <Route path="/menu2" element={<Menu2 />} />
 
         </Routes>
 
