@@ -1,4 +1,5 @@
 const express = require('express')
+const { guardarScore } = require('./db')
 const app = express()
 const port = process.env.PORT ?? 3001
 app.use(express.json())
@@ -53,7 +54,8 @@ app.get("/user/:score", async (req, res) => {
 })
 //atualizar o score
 app.patch("/user/:score", (req,res)=> {
-    const {user,score} = req.body;
+    const {user} = req.body;
+    const {score}= req.params;
 if(user && score){
     res.status(200).json({
         user: score
@@ -62,13 +64,20 @@ if(user && score){
 })
 
 //para obter todos os scores - falta o score ou leaderboard no gamerender
-app.get("/score",(req,res) => {
+app.get("/score/:score",(req,res) => {
     const {score} = req.params;
     if(score[0] > 500){ //500 é o numero maximo de pontos no nivel
         res.status(200).json({Highscore})
 
     }
 })
+
+app.post("/score",(req,res) => {
+    const {score,user} = req.body;
+    guardarScore(user,score)
+})
+
+ 
 
 
 
