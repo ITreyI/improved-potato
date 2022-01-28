@@ -5,7 +5,6 @@ import Movimento from "./movimento.js";
 
 export default class Mapa {
     constructor(tamanho, mapaDoNivel) {
-        console.log(mapaDoNivel)
         this.mapaDoNivel = mapaDoNivel
         this.tamanho = tamanho
         this.byte = new Image(32, 32);
@@ -14,7 +13,7 @@ export default class Mapa {
 
 
         this.parede = new Image(32, 32);
-        this.parede.src = "/wall.png"
+        this.parede.src = "/StoneWall_TXR.png"
 
         this.code = new Image()
         this.code.src = "/1.png"

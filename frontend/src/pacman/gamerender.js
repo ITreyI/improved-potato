@@ -60,7 +60,7 @@ export default function GameRender() {
             profs.forEach(prof => prof.draw(contexto, pause(), aluno))
             verificarGameOver();
             verificarVitoria();
-            console.log(aluno.score)
+
 
         }
         function desenharScore() {

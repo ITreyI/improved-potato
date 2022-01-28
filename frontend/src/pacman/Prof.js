@@ -42,17 +42,22 @@ export default class Prof {
     }
 
     setImage(contexto, aluno) {
+
         if (aluno.boostActivo) {
             this.setImageBoostActivo(aluno)
-        }
-        if (this.id === 9) {
-            this.image = this.normalProf
-        }
-        if (this.id === 8) {
-            this.image = this.normalProf2
-        }
-        if (this.id === 4) {
-            this.image = this.normalProf3
+        } else {
+            if (this.id === 9) {
+                console.log(this.id)
+                this.image = this.normalProf
+            }
+            if (this.id === 8) {
+
+                this.image = this.normalProf2
+            }
+            if (this.id === 4) {
+                this.image = this.normalProf3
+            }
+
         }
         contexto.drawImage(this.image, this.x, this.y, this.tamanho, this.tamanho)
 
@@ -108,16 +113,16 @@ export default class Prof {
 
     carregarImagens() {
         this.normalProf = new Image()
-        this.normalProf.src = "/Eloisa pixel avatar.png"
+        this.normalProf.src = "/prof1.png"
 
         this.normalProf2 = new Image()
-        this.normalProf2.src = "/Fernando Pixel avatar.png"
+        this.normalProf2.src = "/prof2.png"
 
         this.normalProf3 = new Image()
-        this.normalProf3.src = "/Rafael Avatar.jpg"
+        this.normalProf3.src = "/prof3.jpg"
 
         this.medoProf = new Image()
-        this.medoProf.src = "/scaredGhost1.png"
+        this.medoProf.src = "/scaredGhost.png"
 
         this.medoProf2 = new Image()
         this.medoProf2.src = "/scaredGhost2.png"
