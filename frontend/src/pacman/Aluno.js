@@ -19,7 +19,7 @@ export default class Aluno {
 
         this.grabSound = new Audio('/pegar.wav')
         this.boostSound = new Audio('/')
-        this.pegarProfsSound = new Audio('/')
+        this.pegarProfsSound = new Audio('/comer.wav')
 
         this.boostActivo = false;
         this.boostActivoAcabou = false;
@@ -210,7 +210,7 @@ export default class Aluno {
             const colidiu = profs.filter((inimigo) => inimigo.colidiuCom(this));
             colidiu.forEach(inimigo => {
                 profs.splice(profs.indexOf(inimigo), 1);
-                //criar som quando comer
+                this.pegarProfsSound.play()
             });
 
 
