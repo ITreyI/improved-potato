@@ -1,5 +1,4 @@
-import { useEffect, useRef } from "react"
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import Mapa from "./mapa"
 import './jogo.css'
 
@@ -9,6 +8,8 @@ export default function GameRender() {
     const [audio, setAudio] = useState(new Audio("/sounds/pacman_beginning.wav"))
     let player = useRef(null)
     const jogo = useRef()
+    const [pontos, setPontos] = useState()
+
 
     useEffect(() => {
 
@@ -41,11 +42,15 @@ export default function GameRender() {
         const aluno = mapa.getAluno(velocidade)
         const profs = mapa.getProfs(velocidade);
 
+
         let gameOver = false;
         let vitoria = false;
 
+
+
         const gameOverSound = new Audio("/")
         const vitoriaSound = new Audio("/")
+        console.log(pontos)
 
         // contexto.beginPath();
         // contexto.arc(100, 75, 50, 0, 2 * Math.PI);
@@ -60,7 +65,13 @@ export default function GameRender() {
             profs.forEach(prof => prof.draw(contexto, pause(), aluno))
             verificarGameOver();
             verificarVitoria();
+            setScore();
 
+
+        }
+        function setScore() {
+            const pontos = aluno.score
+            return pontos
 
         }
         function desenharScore() {
@@ -103,6 +114,7 @@ export default function GameRender() {
 
                 }
 
+
                 contexto.fillStyle = "black";
                 contexto.fillRect(0, canvas.height / 3.2, canvas.width, 80);
 
@@ -113,7 +125,7 @@ export default function GameRender() {
                 gradient.addColorStop('1.0', 'red')
 
                 contexto.fillStyle = gradient;
-                //contexto.fillText(text, 10, canvas.height / 2)
+                //contexto.fillText(text, 10, 10)
                 //fillText(text, 10, canvas.height / 2)
             }
         }

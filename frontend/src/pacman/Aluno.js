@@ -1,4 +1,5 @@
 import Movimento from "./movimento";
+import { useState } from "react";
 
 
 export default class Aluno {
@@ -30,8 +31,8 @@ export default class Aluno {
 
 
         this.alunoRotaçaoNormal = this.Rotaçao.drt
-
         this.score = -100;
+
 
         document.addEventListener("keydown", this.teclaPressionada)
     }
@@ -62,6 +63,7 @@ export default class Aluno {
         // contexto.restore();
         //poe a imagem no sitio x e y com o tamanho no x e com o tamanho no y
         contexto.drawImage(this.alunoImagens[this.alunoImagensIndex], this.x, this.y, this.tamanho, this.tamanho)
+
 
     }
 
@@ -178,6 +180,7 @@ export default class Aluno {
         if (this.mapa.apanharPonto(this.x, this.y)) {
             this.grabSound.play();
             this.score += 100
+            console.log(this.score,)
         }
     }
 
