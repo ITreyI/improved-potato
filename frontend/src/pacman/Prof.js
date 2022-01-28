@@ -14,7 +14,7 @@ export default class Prof {
         this.carregarImagens();
 
         this.movimento = Math.floor(Math.random() * Object.keys(Movimento).length);
-        this.movimentoTemporizadorPadrao = this.random(1, 3)
+        this.movimentoTemporizadorPadrao = this.random(1, 10)
         this.movimentoTemporizador = this.movimentoTemporizadorPadrao
 
         this.medoProfTemporizadorPadrao = 10;
