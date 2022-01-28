@@ -8,15 +8,11 @@ body {
     margin-right: 40px;
 }
 .tudo{
-  position: relative;
-  align-content:center;
-  font-size: calc(10px + 2vmin);
-  color: white; 
-}
-#tag{
-   
-    border-radius: 5%;
-    width: 400px;
+  /*position: relative;
+  align-content:center;*/
+  display: flex;
+  flex-direction: column;
+  color: white;
 
 }
 .main{
@@ -24,22 +20,15 @@ body {
     align-content: center;
     color:black;
     text-shadow: 0px 0px 60x rgba(255, 255, 255, 1);
-    top: 100px;
-    left: 450px;
-    height: 300px;
-    width: 500px;
+
 }
 
 .caixa{
-    width: 15px;
-    font-family: PacMan;
-    border-radius: 25px;
-    position: absolute;
-    height: 40px;
-    top: 300px;
-   left: 500px;
-
-
+  position: relative;
+  height: auto;
+  font-family: PacMan;
+  border-radius: 25px;
+  border-radius: 5%;
 }
 
 
@@ -150,6 +139,6 @@ body {
     
 
 .soundicon{
-    height: 20px;
+
 }
 

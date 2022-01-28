@@ -17,7 +17,7 @@ export default class Aluno {
         this.movimentoTempo = 10;
         this.movimentoContador = null;
 
-        this.grabSound = new Audio('/sounds/pacman_chomp.wav')
+        this.grabSound = new Audio('/pegar.wav')
         this.boostSound = new Audio('/')
         this.pegarProfsSound = new Audio('/')
 
@@ -54,29 +54,29 @@ export default class Aluno {
 
         const size = this.tamanho / 2
         //faz a imagem rodar
-        contexto.save();
-        contexto.translate(this.x + size, this.y + size);
-        contexto.rotate((this.alunoRotaçaoNormal * 90 * Math.PI / 180))
-        contexto.drawImage(this.alunoImagens[this.alunoImagensIndex], -size, -size, this.tamanho, this.tamanho)
+        // contexto.save();
+        // contexto.translate(this.x + size, this.y + size);
+        // contexto.rotate((this.alunoRotaçaoNormal * 90 * Math.PI / 180))
+        // contexto.drawImage(this.alunoImagens[this.alunoImagensIndex], -size, -size, this.tamanho, this.tamanho)
 
-        contexto.restore();
+        // contexto.restore();
         //poe a imagem no sitio x e y com o tamanho no x e com o tamanho no y
-        //contexto.drawImage(this.alunoImagens[this.alunoImagensIndex], this.x, this.y, this.tamanho, this.tamanho)
+        contexto.drawImage(this.alunoImagens[this.alunoImagensIndex], this.x, this.y, this.tamanho, this.tamanho)
 
     }
 
     carregarImagem() {
         const alunoImagem1 = new Image();
-        alunoImagem1.src = '/pac0.png'
+        alunoImagem1.src = '/main1G.png'
 
         const alunoImagem2 = new Image();
-        alunoImagem2.src = '/pac1.png'
+        alunoImagem2.src = '/main2G.png'
 
         const alunoImagem3 = new Image();
-        alunoImagem3.src = '/pac2.png'
+        alunoImagem3.src = '/main3G.png'
 
         const alunoImagem4 = new Image();
-        alunoImagem4.src = '/pac1.png'
+        alunoImagem4.src = '/main1G.png'
 
         this.alunoImagens = [alunoImagem1, alunoImagem2, alunoImagem3, alunoImagem4];
         this.alunoImagensIndex = 1

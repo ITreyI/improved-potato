@@ -112,13 +112,13 @@ export default class Prof {
 
     carregarImagens() {
         this.normalProf = new Image()
-        this.normalProf.src = "/prof1.png"
+        this.normalProf.src = "/EliosaF1.png"
 
         this.normalProf2 = new Image()
-        this.normalProf2.src = "/prof2.png"
+        this.normalProf2.src = "/FerF1.png"
 
         this.normalProf3 = new Image()
-        this.normalProf3.src = "/prof3.jpg"
+        this.normalProf3.src = "/RafaF1.png"
 
         this.medoProf = new Image()
         this.medoProf.src = "/scaredGhost.png"
