@@ -30,7 +30,7 @@ app.post("/user", async (req, res) => { //interface2
 app.get("/user/:score", async (req, res) => {
     const score = await AssociaUserAoScore() // este await é q faz a asociação do fetch através da função noutros ficheiros?
 
-    const { user, score } = req.params
+    //const { user, score } = req.params
 
     const token = req.header("authorization");
 
@@ -38,7 +38,7 @@ app.get("/user/:score", async (req, res) => {
         res.status(401).json({ message: userError.tokenNaoRecebido })
     }
 
-    const score = score.find(s => s.token.toString() === token);
+    //const score = score.find(s => s.token.toString() === token);
 
     if (!session) {
         res.status(403).json({ message: userError.tokenError })
