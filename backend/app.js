@@ -1,28 +1,81 @@
-
 const express = require('express')
 const app = express()
 const port = process.env.PORT ?? 3001
 app.use(express.json())
-app.listen(port, () => console.log(`À escuta em http://localhost:${port}`))
 
+app.post("/user", async (req, res) => { //interface2
+    const sessions = await readAllSessions()
+    const token = req.header("authorization");
 
-app.get("/user", (req, res) => {
+    if (token === undefined) {
+        res.status(401).json({ message: userError.tokenNaoRecebido })
+    }
 
-    app.post("/user",(req,res) => {
-        const id = req.body
-        
+    const session = sessions.find(s => s.token.toString() === token);
+
+    if (!session) {
+        res.status(403).json({ message: userError.tokenError })
+    }
+
+    else {
+        const user = sessions.find(s => s.token.toString() === token).user
+        res.status(200).json({
+            _id: token
+        })
+    }
+})
+//gamereder.js
+//score
+app.get("/user/:score", async (req, res) => {
+    const score = await AssociaUserAoScore() // este await é q faz a asociação do fetch através da função noutros ficheiros?
+
+    const { user, score } = req.params
+
+    const token = req.header("authorization");
+
+    if (token === undefined) {
+        res.status(401).json({ message: userError.tokenNaoRecebido })
+    }
+
+    const score = score.find(s => s.token.toString() === token);
+
+    if (!session) {
+        res.status(403).json({ message: userError.tokenError })
+    }
+
+    else {
+        const user = score.find(s => s.token.toString() === token).user
+        res.status(200).json({
+            sameUser: token === id
+        })
+    }
+
+})
+//atualizar o score
+app.patch("/user/:score", (req,res)=> {
+    const {user,score} = req.body;
+if(user && score){
+    res.status(200).json({
+        user: score
     })
-
-    app.get("/user",(req,res) => {
-        
-    })
-
-    app.get("/user/:id",(req,res) => {
-
-    })
-  
+}
 })
 
+//para obter todos os scores - falta o score ou leaderboard no gamerender
+app.get("/score",(req,res) => {
+    const {score} = req.params;
+    if(score[0] > 500){ //500 é o numero maximo de pontos no nivel
+        res.status(200).json({Highscore})
+
+    }
+})
+
+
+
+
+
+
+app.listen(port, () => console.log(`À escuta em http://localhost:${port}`))
 
 
 //state

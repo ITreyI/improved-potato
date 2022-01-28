@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import GameRender from './pacman/gamerender';
-
+import { useState } from 'react';
 //import { Router, Routes } from 'react-router-dom'
 import Interface1 from './interface/Interface1';
 import Interface2 from './interface/Interface2';
@@ -13,14 +13,15 @@ import Menu2 from './interface/Menu2Teste';
 import Guia from './interface/Guia';
 
 function App() {
+  const [user,setUser]= useState("")
   return (
     <div className="App">
 
       <BrowserRouter>
         <Routes>
-          <Route path="/jogo" element={<GameRender />} />
+          <Route path="/jogo" element={<GameRender user={user}/>} />
           <Route path="/" element={<Interface1 />} />
-          <Route path="/interface2" element={<Interface2 />} />
+          <Route path="/interface2" element={<Interface2  user={user} setUser={setUser}/>} />
           <Route path="/menu" element={<Menu1 />} />
           <Route path="/contador" element={<Contador />} />
           <Route path="/menu2" element={<Menu2 />} />

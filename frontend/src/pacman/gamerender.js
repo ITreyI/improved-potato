@@ -4,9 +4,11 @@ import Mapa from "./mapa"
 import './jogo.css'
 
 
-export default function GameRender() {
+export default function GameRender({user}) {
     const [som, setSom] = useState(false)
     const [audio, setAudio] = useState(new Audio("/sounds/pacman_beginning.wav"))
+    
+   //const SKORE= EnviaScoreBackend()
     let player = useRef(null)
     const jogo = useRef()
 
@@ -100,7 +102,7 @@ export default function GameRender() {
                 let text = "Vitória";
                 if (gameOver) {
                     text = "Perdeu";
-
+                
                 }
 
                 contexto.fillStyle = "black";
@@ -123,15 +125,88 @@ export default function GameRender() {
 
         setInterval(gameLoop, 1000 / 75)
 
-    }, [])
+    }, [])  
 
+    
+       
+  
     return (<div><canvas ref={jogo}></canvas>
 
 
         <audio ref={player} src="/sounds/pacman_beginning.wav"></audio>
         <div>
             <a onClick={() => som ? audio.play() : audio.pause()} >{<img onClick={() => setSom((s) => !s)} src={som ? "https://img.icons8.com/ios-filled/50/000000/room-sound.png" : "https://img.icons8.com/ios-filled/50/000000/mute--v1.png"}></img>}</a>
-
+        <div>{user}</div>
         </div></div >)
 
+} 
+
+
+/* function EnviaScoreBackend(setUser,setScore){
+        return async function (user,score) {
+            const res = await fetch("/score", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    user
+                })
+            })
+            const resJson = await res.json()
+            console.log(resJson)
+            setUser(resJson.user)
+            setScore(resJson.score)
+}} */
+function AssociaUserAoScore(user,setScore){ // ou user,score?
+     return async function(user,score){
+         const res = await fetch("/user/:score", {
+            method: "GET",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({
+                user: score
+            })
+         })
+         const resJson= await res.json()
+         console.log(res.json)
+         user(resJson.user)
+         setScore(resJson.score)
+         
+     }
+ }
+
+ function AtualizaScore(setScore, user){
+     return async function (score){
+         const res = await fetch ("/user/:score",{
+             method: "PATCH",
+             headers: { "Content-Type": "application/json" },
+             body: JSON.stringify({
+                 user: score
+         })
+     })
+     const resJson= await res.json()
+     console.log(res.json)
+     setScore(resJson.score)
+     user(resJson.user)
+ }}
+
+ 
+ function TodosOsScores(score){
+    return async function(score){
+        const res = await fetch("/score", {
+           method: "GET",
+           headers: {"Content-Type": "application/json"},
+           params: JSON.stringify({
+               score
+           })
+        })
+        const resJson= await res.json()
+        console.log(res.json)
+        score(resJson.score)
+        
+    }
 }
+
+//function EnviaScoreBackend -- faz um pedido para enviar o score do jogo atual para o backend
+//function AssociaUserAoScore -- faz um pedido para que o user seja asscoiado a um score durante o jogo
+//function AtualizaScore -- faz ujm pedido para o backend atualizar o score do jogador
+
+//function TodosOsScores -- faz um pedido para a leaderboard do jogo ?? 
