@@ -156,8 +156,8 @@ export default function GameRender({ user }) {
 }
 
 
-function EnviaScoreBackend(user, score) {
-
+async function EnviaScoreBackend(user, score) {
+    console.log("EnviaScoreBackend")
     const res = await fetch("/score", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
