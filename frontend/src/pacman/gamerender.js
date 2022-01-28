@@ -113,8 +113,12 @@ export default function GameRender() {
                 gradient.addColorStop('1.0', 'red')
 
                 contexto.fillStyle = gradient;
+<<<<<<< HEAD
                 //contexto.fillText(text, 10, canvas.height / 2)
                 //fillText(text, 10, canvas.height / 2)
+=======
+                contexto.fillText(text, 10, canvas.height / 2)
+>>>>>>> parent of a951b5f (profs diferente)
             }
         }
 
