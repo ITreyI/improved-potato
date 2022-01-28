@@ -1,12 +1,12 @@
 
 const express = require('express')
 const app = express()
-const port = process.env.PORT ?? 3000
+const port = process.env.PORT ?? 3001
 app.use(express.json())
 app.listen(port, () => console.log(`À escuta em http://localhost:${port}`))
 
- 
 
+app.get("/user", (req, res) => {
 
     app.post("/user",(req,res) => {
         const id = req.body
@@ -21,6 +21,7 @@ app.listen(port, () => console.log(`À escuta em http://localhost:${port}`))
 
     })
   
+})
 
 
 

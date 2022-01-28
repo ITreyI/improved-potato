@@ -30,12 +30,10 @@ export default class Aluno {
 
 
         this.alunoRotaçaoNormal = this.Rotaçao.drt
+
         this.score = -100;
 
         document.addEventListener("keydown", this.teclaPressionada)
-    }
-    sendScore() {
-        return this.score
     }
     Rotaçao = {
         drt: 0,
@@ -179,12 +177,8 @@ export default class Aluno {
     apanhar() {
         if (this.mapa.apanharPonto(this.x, this.y)) {
             this.grabSound.play();
-
             this.score += 100
         }
-    }
-    sendScore() {
-        return this.score
     }
 
     apanharPoder() {
