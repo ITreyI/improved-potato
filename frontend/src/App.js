@@ -10,7 +10,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Menu from './interface/Interface2';
 import Contador from './interface/Contador'
 import Menu2 from './interface/Menu2Teste';
-
+import Guia from './interface/Guia';
 
 function App() {
   return (
@@ -25,7 +25,7 @@ function App() {
           <Route path="/contador" element={<Contador />} />
           <Route path="/menu2" element={<Menu2 />} />
           <Route path="/jogo" element={<Contador/>}/>
-
+          <Route path="/guia" element={<Guia/>}/>
         </Routes>
 
       </BrowserRouter>
