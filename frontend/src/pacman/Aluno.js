@@ -31,7 +31,7 @@ export default class Aluno {
 
         this.alunoRotaçaoNormal = this.Rotaçao.drt
 
-        this.score = 0;
+        this.score = -100;
 
         document.addEventListener("keydown", this.teclaPressionada)
     }
