@@ -47,7 +47,6 @@ export default class Prof {
             this.setImageBoostActivo(aluno)
         } else {
             if (this.id === 9) {
-                console.log(this.id)
                 this.image = this.normalProf
             }
             if (this.id === 8) {

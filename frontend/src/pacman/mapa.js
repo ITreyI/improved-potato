@@ -139,7 +139,7 @@ export default class Mapa {
                 espaço = this.mapaDoNivel[linha][coluna];
                 if (espaço === 9) {
                     this.mapaDoNivel[linha][coluna] = 0;
-                    profs.push(new Prof(coluna * this.tamanho, linha * this.tamanho, this.tamanho, velocidade, espaço, this))
+                    profs.push(new Prof(coluna * this.tamanho, linha * this.tamanho, this.tamanho, velocidade, espaço, this, espaço))
                 }
                 if (espaço === 8) {
                     this.mapaDoNivel[linha][coluna] = 0;
