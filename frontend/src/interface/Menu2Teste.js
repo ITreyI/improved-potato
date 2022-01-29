@@ -6,7 +6,7 @@ export default function Menu2() {
     return (
         <div id="allthethings">
         <div id="left"></div>
-        <div id="single" ><p>SINGLE PLAYER</p></div>
+        <div id="single" onClick={() => navigate(`/Jogo`)}><p>SINGLE PLAYER</p></div>
         <div id="multiplayer"><p>MULTIPLAYER</p></div>
         <div id="options"><p>OPTIONS</p></div>
         <div id="credits" onClick={() => navigate(`/Guia`)}><p>GUIA</p></div>

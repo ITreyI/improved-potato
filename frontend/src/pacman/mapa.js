@@ -18,6 +18,9 @@ export default class Mapa {
         this.code = new Image()
         this.code.src = "/10.png"
 
+        this.codeAmarelo = new Image()
+        this.codeAmarelo.src = "/1amarelo.png"
+
         this.boost = this.code
 
         this.boostTemporizadorPadrao = 20;
@@ -27,29 +30,6 @@ export default class Mapa {
 
 
     // 1 é parede, 0 é pontos, 5 o aluno, 3 é vazio, 9,8 prof, 7 boost
-    // mapaDoNivel = [
-    //     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    //     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    //     [1, 0, 0, 0, 3, 3, 3, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    //     [1, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    //     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    //     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    //     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    //     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    //     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 8, 0, 0, 0, 0, 0, 1],
-    //     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    //     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    //     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    //     [1, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    //     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    //     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    // ]
-    // mapaDoNivel2 = [
-    //     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    //     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    //     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    //     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    //]
 
     draw(contexto) {
         let linha = 0
@@ -96,7 +76,7 @@ export default class Mapa {
         if (this.boostTemporizador === 0) {
             this.boostTemporizador = this.boostTemporizadorPadrao;
             if (this.boost === this.code) {
-                this.boost = this.byte
+                this.boost = this.codeAmarelo
             } else {
                 this.boost = this.code
             }
@@ -121,7 +101,7 @@ export default class Mapa {
             for (coluna = 0; coluna < this.mapaDoNivel[linha].length; coluna++) {
                 espaço = this.mapaDoNivel[linha][coluna]
                 if (espaço === 5) {
-                    this.mapaDoNivel[linha][coluna] = 0
+                    this.mapaDoNivel[linha][coluna] = 3
                     return new Aluno(coluna * this.tamanho, linha * this.tamanho, this.tamanho, velocidade, espaço, this);
                 }
 
@@ -138,15 +118,15 @@ export default class Mapa {
             for (coluna = 0; coluna < this.mapaDoNivel[linha].length; coluna++) {
                 espaço = this.mapaDoNivel[linha][coluna];
                 if (espaço === 9) {
-                    this.mapaDoNivel[linha][coluna] = 0;
+                    this.mapaDoNivel[linha][coluna] = 3;
                     profs.push(new Prof(coluna * this.tamanho, linha * this.tamanho, this.tamanho, velocidade, espaço, this, espaço))
                 }
                 if (espaço === 8) {
-                    this.mapaDoNivel[linha][coluna] = 0;
+                    this.mapaDoNivel[linha][coluna] = 3;
                     profs.push(new Prof(coluna * this.tamanho, linha * this.tamanho, this.tamanho, velocidade, espaço, this, espaço))
                 }
                 if (espaço === 4) {
-                    this.mapaDoNivel[linha][coluna] = 0;
+                    this.mapaDoNivel[linha][coluna] = 3;
                     profs.push(new Prof(coluna * this.tamanho, linha * this.tamanho, this.tamanho, velocidade, espaço, this, espaço))
                 }
             }
