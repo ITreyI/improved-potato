@@ -61,8 +61,8 @@ export default function GameRender({ user }) {
 
 
 
-        const gameOverSound = new Audio("/")
-        const vitoriaSound = new Audio("/")
+        const gameOverSound = new Audio("/Death.wav")
+        const vitoriaSound = new Audio("/win.wav")
 
         // contexto.beginPath();
         // contexto.arc(100, 75, 50, 0, 2 * Math.PI);
@@ -99,8 +99,7 @@ export default function GameRender({ user }) {
                 gameOver = eGameOver();
                 if (gameOver) {
                     EnviaScoreBackend()
-
-                    //gameOverSound.play()
+                    gameOverSound.play()
                 }
             }
         }
@@ -109,7 +108,7 @@ export default function GameRender({ user }) {
             if (!vitoria) {
                 vitoria = mapa.ganhou();
                 if (vitoria) {
-                    //vitoriaSound.play()
+                    vitoriaSound.play()
                 }
             }
         }
@@ -140,7 +139,7 @@ export default function GameRender({ user }) {
                 gradient.addColorStop('1.0', 'red')
 
                 contexto.fillStyle = gradient;
-               // contexto.fillText(text, 10, 10)
+                // contexto.fillText(text, 10, 10)
                 //fillText(text, 10, canvas.height / 2)
             }
         }
@@ -157,22 +156,22 @@ export default function GameRender({ user }) {
 
     let navigate = useNavigate();
     return (
-        
-    <div>
-        <h1>BYTES4FUN</h1>
+
         <div>
-        <a onClick={() => som ? audio.play() : audio.pause()} >{<img onClick={() => setSom((s) => !s)} src={som ? "https://img.icons8.com/ios-filled/50/000000/room-sound.png" : "https://img.icons8.com/ios-filled/50/000000/mute--v1.png"}></img>}</a>
+            <h1>BYTES4FUN</h1>
+            <div>
+                <a onClick={() => som ? audio.play() : audio.pause()} >{<img onClick={() => setSom((s) => !s)} src={som ? "https://img.icons8.com/ios-filled/50/000000/room-sound.png" : "https://img.icons8.com/ios-filled/50/000000/mute--v1.png"}></img>}</a>
+            </div>
+            <div className="score">Score
+                <div>{score}</div>
+            </div>
+
+            <canvas ref={jogo}></canvas>
+            <audio autoPlay ref={player} src="/sounds/pacman_beginning.wav"></audio>
         </div>
-        <div className="score">Score
-         <div>{score}</div>
-        </div>
-              
-        <canvas ref={jogo}></canvas>  
-        <audio ref={player} src="/sounds/pacman_beginning.wav"></audio>
-          </div>
-          
-        
-        )
+
+
+    )
 }
 
 
@@ -186,7 +185,7 @@ async function EnviaScoreBackend(user, score) {
             user, score
         })
     })
-    const resJson = await res.json({score})
+    const resJson = await res.json({ score })
     console.log(resJson)
 
 }
