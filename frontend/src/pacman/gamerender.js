@@ -4,8 +4,6 @@ import './jogo.css'
 import { Routes, Route, Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-
-
 export default function GameRender({ user }) {
     const [som, setSom] = useState(true)
     const [audio, setAudio] = useState(new Audio("/game.mp3"))
@@ -15,17 +13,13 @@ export default function GameRender({ user }) {
     let player = useRef(null)
     const jogo = useRef()
 
-
-
-
     useEffect(() => {
 
 
-        const tamanho = 32;
-        const velocidade = 1;
-
-        const canvas = jogo.current
-        const contexto = canvas.getContext('2d');
+        const tamanho = 32; //tamanho de pixeis que cada elemento ocupa
+        const velocidade = 1; //velocidade do jogo
+        const canvas = jogo.current //renderização do jogo
+        const contexto = canvas.getContext('2d'); //desenha no canvas em 2D
         const mapaDoNivel1 = [
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
             [1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1],
@@ -46,13 +40,13 @@ export default function GameRender({ user }) {
             [1, 3, 3, 1, 3, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 3, 1, 3, 3, 1],
             [1, 3, 3, 3, 3, 3, 3, 3, 0, 3, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1],
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-        ]
+        ] //mapa do nível arcade
 
 
-        const mapaDoNivel2 = [[1, 1, 1][1, 5, 1]]
-        const mapa = new Mapa(tamanho, mapaDoNivel1);
+        const mapaDoNivel2 = [[1, 1, 1][1, 5, 1]] //mapa nível 2 teste
+        const mapa = new Mapa(tamanho, mapaDoNivel1); //fecho do mapa
 
-        const aluno = mapa.getAluno(velocidade)
+        const aluno = mapa.getAluno(velocidade) //
         const profs = mapa.getProfs(velocidade);
 
         let gameOver = false;
