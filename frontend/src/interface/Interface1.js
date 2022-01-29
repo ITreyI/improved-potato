@@ -19,7 +19,7 @@ export default function Homepage() {
 
             </div>
             <h1>BYTES4FUN</h1>
-            <video top="500" height="200" width="500" className="divVideo" loop autoPlay="autoplay" muted src="video.mp4" type="video/mp4">
+            <video top="500" height="200" width="500" className="divVideo" loop autoPlay="autoplay" muted src="video1.mp4" type="video/mp4">
            
             </video> 
           

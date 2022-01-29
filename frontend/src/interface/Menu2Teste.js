@@ -8,8 +8,7 @@ export default function Menu2() {
         <h1>BYTES4FUN</h1>
         <div id="allthethings">
         <div id="left"></div>
-        <button id="single" onClick={() => navigate(`/Jogo`)}><p>SINGLE PLAYER</p></button>
-        <div id="multiplayer" onClick={() => navigate(`/Contador`)}><p>JOGO 1</p></div>
+        <div id="multiplayer" onClick={() => navigate(`/Contador`)}><p>JOGAR</p></div>
         <button id="credits" onClick={() => navigate(`/Guia`)}><p>GUIA</p></button>
         <div id="right"></div>
         <div id="exit"></div>
