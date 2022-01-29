@@ -31,7 +31,7 @@ export default class Aluno {
 
 
         this.alunoRotaçaoNormal = this.Rotaçao.drt
-        this.score = -100;
+        this.score = 0;
 
 
         document.addEventListener("keydown", this.teclaPressionada)
@@ -180,6 +180,7 @@ export default class Aluno {
         if (this.mapa.apanharPonto(this.x, this.y)) {
          //   this.grabSound.play();
             this.score += 100
+            //xsetScore(this.score);
             console.log(this.score,)
         }
     }

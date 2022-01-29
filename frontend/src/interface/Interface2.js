@@ -3,17 +3,18 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useRef } from 'react';
 
-export default function Interface2({user,setUser}) { //{user,setUser}
+export default function Interface2({ user, setUser }) { //{user,setUser}
     const [som, setSom] = useState(false)
     const [audio, setAudio] = useState(new Audio("/sounds/pacman_beginning.wav"))
-   // const [id, setId] = useState("")
+    // const [id, setId] = useState("")
     let player = useRef(null)
     let navigate = useNavigate();
 
     const handleClick = () => {
+        fetch()
         const url = "/user"
         const response = fetch(url)
-      // const json = response.json() -- dá erro
+        //const json = response.json()
     }
     return (
         <div>
@@ -39,4 +40,4 @@ export default function Interface2({user,setUser}) { //{user,setUser}
     )
 }
 
- 
+
