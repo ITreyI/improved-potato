@@ -9,6 +9,7 @@ export default function Interface2({ user, setUser }) { //{user,setUser}
     // const [id, setId] = useState("")
     let player = useRef(null)
     let navigate = useNavigate();
+     //let playername = document.getElementById('txtPlayerName').value
 
     const handleClick = () => {
         fetch()
@@ -25,7 +26,8 @@ export default function Interface2({ user, setUser }) { //{user,setUser}
                 <h1 className="main">BYTES4FUN</h1>
 
                 <input placeholder="Insira o seu nome de jogador ..." type="text" className="caixa"></input>
-
+               
+                
                 <button className="entrar-pushable" role="button" onClick={() => handleClick(navigate(`/Menu2`))}>
                     <span className="entrar-shadow"></span>
                     <span className="entrar-edge"></span>

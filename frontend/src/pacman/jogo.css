@@ -4,21 +4,32 @@
   }
 canvas {
     box-shadow: 10px 10px 20px black;
-  
+    width: 30%;
+   
 }
   
   div {
     font-family: CrackMan;
+    font-size: 30px;
   }
 
   .soundIcon{
     height:20px;
-    left:10px;
+   left:10px;
     top:20px;
     position: right;
   }
 
  .quadroJogo{
    position: center;
-   top: 50px;
+   top: 30px;
+ }
+
+ h1{
+   font-size: 20px;
+ }
+
+ .score{
+    width:220px;
+    float: right;
  }

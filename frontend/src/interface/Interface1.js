@@ -19,9 +19,9 @@ export default function Homepage() {
 
             </div>
             <h1>BYTES4FUN</h1>
-            <video top="500" height="200" width="500" className="divVideo" controls>
-<source src="/video/Video Interface1_Trim.mp4" type="video/mp4"></source>
-</video> 
+            <video top="500" height="200" width="500" className="divVideo" loop autoPlay="autoplay" muted src="video.mp4" type="video/mp4">
+           
+            </video> 
           
             <button className="entrar-pushable" role="button" onClick={() => navigate(`/Interface2`)}>
                     <span className="entrar-shadow"></span>

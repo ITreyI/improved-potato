@@ -160,13 +160,18 @@ export default function GameRender({ user }) {
         
     <div>
         <h1>BYTES4FUN</h1>
-        <canvas className="quadroJogo" ref={jogo}></canvas>
-        <audio ref={player} src="/sounds/pacman_beginning.wav"></audio>
         <div>
-            <a onClick={() => som ? audio.play() : audio.pause()} >{<img onClick={() => setSom((s) => !s)} src={som ? "https://img.icons8.com/ios-filled/50/000000/room-sound.png" : "https://img.icons8.com/ios-filled/50/000000/mute--v1.png"}></img>}</a>
-        <div>Score</div>
-            <li>1000 pontos</li>
-        </div></div >
+        <a onClick={() => som ? audio.play() : audio.pause()} >{<img onClick={() => setSom((s) => !s)} src={som ? "https://img.icons8.com/ios-filled/50/000000/room-sound.png" : "https://img.icons8.com/ios-filled/50/000000/mute--v1.png"}></img>}</a>
+        </div>
+        <div className="score">Score
+         <div>{score}</div>
+        </div>
+              
+        <canvas ref={jogo}></canvas>  
+        <audio ref={player} src="/sounds/pacman_beginning.wav"></audio>
+          </div>
+          
+        
         )
 }
 
@@ -240,3 +245,4 @@ function TodosOsScores(score) {
 //function AtualizaScore -- faz ujm pedido para o backend atualizar o score do jogador
 
 //function TodosOsScores -- faz um pedido para a leaderboard do jogo ?? 
+//criar um parametro para incrementar para quando comemos   0 ou fantasmas associar o score q ta no interface do jogo
