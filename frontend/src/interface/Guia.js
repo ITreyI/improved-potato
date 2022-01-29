@@ -1,5 +1,6 @@
 
 import { useNavigate } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom"
 import { useState } from "react";
 
 export default function Guia() {
@@ -21,9 +22,13 @@ let navigate = useNavigate()
                 <li>A cada nível, a dificuldade aumenta em termos de tempo e de bytes a serem comidos</li>
                 <li>O jogador pode selecionar o Modo Infinito (não tem níveis) ou o Modo Arcada (pode escolher um nível de 1 a 10)</li>
             </ul>
-            <button onClick={<img onClick={() => navigate(`/menu2`)} src={"/pubIcone-X-Png-1024x1024.png"}></img>}>X</button>
+            
+         <button onClick={() => navigate(`/menu2`)}>X</button>
         </div>
 
     )
 
 }
+
+//máximo 80 caracteres por linha
+//letra tipo open sans

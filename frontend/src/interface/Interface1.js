@@ -19,7 +19,20 @@ export default function Homepage() {
 
             </div>
             <h1>BYTES4FUN</h1>
-            <button className="button" onClick={() => navigate(`/interface2`)}>Começar</button>
+            <button className="entrar-pushable" role="button" onClick={() => navigate(`/Interface2`)}>
+                    <span className="entrar-shadow"></span>
+                    <span className="entrar-edge"></span>
+                    <span className="entrar-front text">
+                        Começar
+                    </span>
+                </button>
+    
+        <div >
+     <video top="500" height="200" width="500" class="divVideo" controls>
+<source src="/video/Video Interface1_Trim.mp4" type="video/mp4"></source>
+</video> 
+            
+        </div>
         </div>
 
     )

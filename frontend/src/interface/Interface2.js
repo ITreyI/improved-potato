@@ -11,22 +11,19 @@ export default function Interface2({user,setUser}) { //{user,setUser}
     let navigate = useNavigate();
 
     const handleClick = () => {
-        fetch()
-        const url = '/user'
+        const url = "/user"
         const response = fetch(url)
-        const json = response.json()
+      // const json = response.json() -- dá erro
     }
     return (
         <div>
-            <div className="tudo">
-
-
+            <div >
                 <a onClick={() => !som ? audio.play() : audio.pause()} >{<img onClick={() => setAudio((s) => !s)} src={som ? "https://img.icons8.com/ios-filled/50/000000/room-sound.png" : "https://img.icons8.com/ios-filled/50/000000/mute--v1.png"}></img>}</a>
                 <audio ref={player} src="/sounds/pacman_beginning.wav"></audio>
 
-                <h1 class="main">BYTES4FUN</h1>
+                <h1 className="main">BYTES4FUN</h1>
 
-                <input placeholder="Insira o seu nome de jogador ..." type="text" class="caixa"></input>
+                <input placeholder="Insira o seu nome de jogador ..." type="text" className="caixa"></input>
 
                 <button className="entrar-pushable" role="button" onClick={() => handleClick(navigate(`/Menu2`))}>
                     <span className="entrar-shadow"></span>

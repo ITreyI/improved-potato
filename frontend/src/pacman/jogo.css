@@ -4,9 +4,21 @@
   }
 canvas {
     box-shadow: 10px 10px 20px black;
-
+  
 }
   
   div {
     font-family: CrackMan;
   }
+
+  .soundIcon{
+    height:20px;
+    left:10px;
+    top:20px;
+    position: left;
+  }
+
+ .quadroJogo{
+   position: center;
+   top:100px;
+ }

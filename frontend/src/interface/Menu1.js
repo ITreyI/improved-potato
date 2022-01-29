@@ -1,6 +1,7 @@
 import "./Menu1.css"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom"
 import { useRef } from 'react';
 export default function Menu() {
       const [som, setSom] = useState(true)

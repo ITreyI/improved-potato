@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import GameRender from './pacman/gamerender';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 //import { Router, Routes } from 'react-router-dom'
 import Interface1 from './interface/Interface1';
 import Interface2 from './interface/Interface2';
@@ -12,8 +12,21 @@ import Contador from './interface/Contador'
 import Menu2 from './interface/Menu2Teste';
 import Guia from './interface/Guia';
 
-function App() {
-  const [user,setUser]= useState("")
+
+
+  export default function App() {
+  const [user,setUser]= useState("") 
+  
+ /* user.useEffect(() => {
+    const fetchJSON = async () => {
+      const response = await fetch("/file.json");
+      let json = await response.json();
+      setUser(json);
+    };
+
+    fetchJSON();
+  ; */
+
   return (
     <div className="App">
 
@@ -33,8 +46,4 @@ function App() {
 
     </div >
   );
-}
-
-export default App;
-//<Route path="/interface" element={<Interface1 />} />
-//          <Route path="/interface" element=//{<Interface2 />} />
+ }

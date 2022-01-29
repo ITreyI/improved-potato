@@ -178,7 +178,7 @@ export default class Aluno {
     }
     apanhar() {
         if (this.mapa.apanharPonto(this.x, this.y)) {
-            this.grabSound.play();
+         //   this.grabSound.play();
             this.score += 100
             console.log(this.score,)
         }

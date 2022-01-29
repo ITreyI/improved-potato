@@ -79,7 +79,7 @@ export default function GameRender({ user }) {
         function desenharScore() {
             contexto.font = "16 px Arial";
             contexto.fillStyle = "#0095DD";
-            contexto.fillText = ("Score: " + aluno.score, 8, 20);
+            //contexto.fillText = ("Score: " + aluno.score, 8, 20);
         }
 
 
@@ -89,7 +89,7 @@ export default function GameRender({ user }) {
                 if (gameOver) {
                     EnviaScoreBackend()
 
-                    gameOverSound.play()
+                    //gameOverSound.play()
                 }
             }
         }
@@ -129,7 +129,7 @@ export default function GameRender({ user }) {
                 gradient.addColorStop('1.0', 'red')
 
                 contexto.fillStyle = gradient;
-                //contexto.fillText(text, 10, 10)
+               // contexto.fillText(text, 10, 10)
                 //fillText(text, 10, canvas.height / 2)
             }
         }
@@ -144,12 +144,12 @@ export default function GameRender({ user }) {
 
 
 
-    return (<div><canvas ref={jogo}></canvas>
+    return (<div><canvas className="quadroJogo" ref={jogo}></canvas>
 
 
         <audio ref={player} src="/sounds/pacman_beginning.wav"></audio>
         <div>
-            <a onClick={() => som ? audio.play() : audio.pause()} >{<img onClick={() => setSom((s) => !s)} src={som ? "https://img.icons8.com/ios-filled/50/000000/room-sound.png" : "https://img.icons8.com/ios-filled/50/000000/mute--v1.png"}></img>}</a>
+        
             <div>{user}</div>
         </div></div >)
 
@@ -165,7 +165,7 @@ async function EnviaScoreBackend(user, score) {
             user, score
         })
     })
-    const resJson = await res.json()
+    const resJson = await res.json({score})
     console.log(resJson)
 
 }
