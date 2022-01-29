@@ -1,6 +1,11 @@
+@font-face {
+  font-family: CrackMan;
+  src: url(../../public/font-crackman/CrackMan.TTF);
+}
+
 body {
   background:orange;
-  
+  font:Open sans;
 }
 
 
@@ -14,7 +19,7 @@ body {
   position:absolute;
   top:5px;
   left:5px;
-  
+  font:Open sans;
   border:3px solid orange;
   border-top-color:transparent;
   
@@ -30,13 +35,13 @@ body {
   position:Absolute;
   right:13px;
   top:6px;
-  
+  font:Open sans;
 }
 
 
 #exit:hover {
   background:#7A0000;
-  
+ 
 }
 
 
@@ -44,27 +49,20 @@ body {
 #allthethings {
   width:0px;
   height:0px;
-  
   border-left: 300px solid transparent;
   border-right:300px solid transparent;
   border-top: 300px solid transparent;
   border-radius: px;
   position:relative;
   margin:auto;
-  top:5px;
+  top:200px;
   left:2px;
-  
-  
-  
-  
-  
   
 }
 
 #single {
-  
   position:relative;
-  bottom:330px;
+  bottom: 470px;
   right:300px;
   height:50px;
   width:600px;
@@ -75,12 +73,8 @@ body {
  -webkit-transition:0.5s;
   transition:0.5s;
   color:orange;
-  font-family:shadows into light;
-  
-  cursor:pointer;
-  
-  
-  
+  font:Open sans;
+  cursor:pointer; 
 }
 
 #single:hover {
@@ -88,14 +82,14 @@ body {
   color:white;
 -webkit-transform:rotate(-1deg);
   transform:rotate(-2deg);
-  
+
   
 }
 
 #multiplayer:hover {
   background:#7A0000;
   color:white;
-   
+  font:Open sans;
   -webkit-transform:rotate(-2deg);
   transform:rotate(-2deg);
   
@@ -107,7 +101,7 @@ body {
   color:white;
   -webkit-transform:rotate(-2deg);
   transform:rotate(-2deg);
-  
+  font:Open sans;
 }
 
 #options:hover {
@@ -115,7 +109,7 @@ body {
   color:white;
   -webkit-transform:rotate(-2deg);
   transform:rotate(-2deg);
-  
+  font:Open sans;
 }
 
 
@@ -124,8 +118,9 @@ body {
 
 #single p {
   position:relative;
-  top:2px;
-  right:4px;
+  top: -25px;
+  right:9px;
+  text-align: center;
   
   
 }
@@ -133,30 +128,33 @@ body {
 #multiplayer {
   height:50px;
   width:500px;
-  background:#006680;
-  position:relative;
-  bottom:345px;
+ bottom: 460px;
   right:240px;
-  text-align:center;
-  font-size:30px;
-  font-family:shadows into light;
-  color:orange;
+    position:relative;
+    background:#006680;
+    text-align:center;
+    font-size:30px;
+   background-size: 1px 300%;
    -webkit-transition:0.5s;
-  transition:0.5s;
-  cursor:pointer;
+    transition:0.5s;
+    color:orange;
+    font:Open sans;
+    cursor:pointer; 
   
-   
   
 }
 #multiplayer p {
   position:relative;
-  top:0px;
+  top: 8px;
   right:9px;
+  text-align: center;
+  font:Open sans;
+
   
 }
 
+
 #options {
-  
   height:50px;
   width:400px;
   background:#006680;
@@ -164,41 +162,51 @@ body {
   bottom:360px;
   right:200px;
   font-size:30px;
-  text-align:center;
-  font-family:shadows into light;
-  color:orange;
-   -webkit-transition:0.5s;
-  transition:0.5s;
-  cursor:pointer;
+      text-align:center;
+      font-size:30px;
+     background-size: 1px 300%;
+     -webkit-transition:0.5s;
+      transition:0.5s;
+      color:orange;
+      font:Open sans;
+      cursor:pointer; 
+    
+    
   
 }
 
 #options p {
   position:relative;
-  top:0px;
-  right:4px;
-  
+  top: 8px;
+  right: 4px;
+  text-align: center;
+  font:Open sans;
 }
-
+ 
 #credits {
   height:50px;
   width:300px;
   position:relative;
   background:#006680;
-  bottom:375px;
+  bottom: 410px;
   font-size:30px;
   right:150px;
-  text-align:center;
-  font-family:shadows into light;
-  color:orange;
-   -webkit-transition:0.5s;
-  transition:0.5s;
-  cursor:pointer;
-  
-}
+   
+      text-align:center;
+      font-size:30px;
+     background-size: 1px 300%;
+     -webkit-transition:0.5s;
+      transition:0.5s;
+      color:orange;
+      font:Open sans;
+      cursor:pointer; 
+    
+    
+  }
+
 
 #credits p {
   position:relative;
-  top:0px;
-  
+  top: -25px;
+  font:Open sans;
 }

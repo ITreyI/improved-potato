@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from "react"
 import Mapa from "./mapa"
 import './jogo.css'
+import { Routes, Route, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 
 export default function GameRender({ user }) {
@@ -152,16 +155,19 @@ export default function GameRender({ user }) {
 
 
 
-
-    return (<div><canvas className="quadroJogo" ref={jogo}></canvas>
-
-
+    let navigate = useNavigate();
+    return (
+        
+    <div>
+        <h1>BYTES4FUN</h1>
+        <canvas className="quadroJogo" ref={jogo}></canvas>
         <audio ref={player} src="/sounds/pacman_beginning.wav"></audio>
         <div>
-        
-            <div>{user}</div>
-        </div></div >)
-
+            <a onClick={() => som ? audio.play() : audio.pause()} >{<img onClick={() => setSom((s) => !s)} src={som ? "https://img.icons8.com/ios-filled/50/000000/room-sound.png" : "https://img.icons8.com/ios-filled/50/000000/mute--v1.png"}></img>}</a>
+        <div>Score</div>
+            <li>1000 pontos</li>
+        </div></div >
+        )
 }
 
 

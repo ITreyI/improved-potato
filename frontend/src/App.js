@@ -40,6 +40,7 @@ import Guia from './interface/Guia';
           <Route path="/menu2" element={<Menu2 />} />
           <Route path="/jogo" element={<Contador/>}/>
           <Route path="/guia" element={<Guia/>}/>
+         
         </Routes>
 
       </BrowserRouter>

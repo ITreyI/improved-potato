@@ -1,5 +1,6 @@
-import Mapa from "./mapa";
+
 import Movimento from "./movimento";
+import Mapa from "./mapa";
 
 export default class Prof {
     constructor(x, y, tamanho, velocidade, espaço, mapa, id) {

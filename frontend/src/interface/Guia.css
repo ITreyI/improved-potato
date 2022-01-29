@@ -1,0 +1,20 @@
+#menu{
+    font-style: italic;
+}
+ul{
+    list-style-type: circle;
+    font-family: Orbitron;
+    
+    perspective: 1000px;
+    -webkit-perspective: 1000px;
+    -moz-perspective: 1000px;
+    top:200px;
+}
+
+ul li{
+    list-style-type: none;
+    perspective: 1000px;
+    -webkit-perspective: 1000px;
+    -moz-perspective: 1000px;
+    top:200px;
+}

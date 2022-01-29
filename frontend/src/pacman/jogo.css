@@ -15,10 +15,10 @@ canvas {
     height:20px;
     left:10px;
     top:20px;
-    position: left;
+    position: right;
   }
 
  .quadroJogo{
    position: center;
-   top:100px;
+   top: 50px;
  }
