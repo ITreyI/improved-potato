@@ -7,13 +7,15 @@ import { useNavigate } from "react-router-dom";
 
 
 export default function GameRender({ user }) {
-    const [som, setSom] = useState(false)
-    const [audio, setAudio] = useState(new Audio("/sounds/pacman_beginning.wav"))
+    const [som, setSom] = useState(true)
+    const [audio, setAudio] = useState(new Audio("/game.mp3"))
+    const [pontos, setPontos] = useState(0)
 
     //const SKORE= EnviaScoreBackend()
     let player = useRef(null)
     const jogo = useRef()
-    let score = 0
+
+
 
 
     useEffect(() => {
@@ -41,20 +43,17 @@ export default function GameRender({ user }) {
             [1, 3, 3, 1, 3, 3, 3, 3, 3, 3, 3, 1, 3, 3, 3, 3, 3, 3, 3, 1, 3, 3, 1],
             [1, 3, 3, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 3, 3, 1],
             [1, 3, 3, 1, 3, 3, 3, 3, 3, 3, 1, 5, 1, 3, 3, 3, 3, 3, 3, 1, 3, 3, 1],
-            [1, 3, 3, 1, 3, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 3, 1, 3, 3, 1],
-            [1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1],
+            [1, 3, 3, 1, 3, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 3, 1, 3, 3, 1],
+            [1, 3, 3, 3, 3, 3, 3, 3, 0, 3, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1],
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         ]
-        //[1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1], vazio
-        //pontos [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-        //parede [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+
 
         const mapaDoNivel2 = [[1, 1, 1][1, 5, 1]]
         const mapa = new Mapa(tamanho, mapaDoNivel1);
 
         const aluno = mapa.getAluno(velocidade)
         const profs = mapa.getProfs(velocidade);
-
 
         let gameOver = false;
         let vitoria = false;
@@ -72,26 +71,13 @@ export default function GameRender({ user }) {
         function gameLoop() {
             mapa.draw(contexto);
             desenharFinal();
-            desenharScore();
             aluno.draw(contexto, pause(), profs)
             profs.forEach(prof => prof.draw(contexto, pause(), aluno))
             verificarGameOver();
             verificarVitoria();
-            setScore();
-
-
+            setPontos();
         }
-        function setScore(s) {
-            score += s
 
-            return score
-
-        }
-        function desenharScore() {
-            contexto.font = "16 px Arial";
-            contexto.fillStyle = "#0095DD";
-            //contexto.fillText = ("Score: " + aluno.score, 8, 20);
-        }
 
 
         function verificarGameOver() {
@@ -103,6 +89,8 @@ export default function GameRender({ user }) {
                 }
             }
         }
+
+        setPontos(pontos, aluno.setScore())
 
         function verificarVitoria() {
             if (!vitoria) {
@@ -160,14 +148,13 @@ export default function GameRender({ user }) {
         <div>
             <h1>BYTES4FUN</h1>
             <div>
-                <a onClick={() => som ? audio.play() : audio.pause()} >{<img onClick={() => setSom((s) => !s)} src={som ? "https://img.icons8.com/ios-filled/50/000000/room-sound.png" : "https://img.icons8.com/ios-filled/50/000000/mute--v1.png"}></img>}</a>
+                <a onClick={() => som ? audio.play() : audio.pause()} >{<img onClick={() => setSom((s) => !s)} src={som ? "https://img.icons8.com/ios-filled/50/000000/mute--v1.png" : "https://img.icons8.com/ios-filled/50/000000/room-sound.png"}></img>}</a>
             </div>
             <div className="score">Score
-                <div>{score}</div>
+                <div>{pontos}</div>
             </div>
 
             <canvas ref={jogo}></canvas>
-            <audio autoPlay ref={player} src="/sounds/pacman_beginning.wav"></audio>
         </div>
 
 

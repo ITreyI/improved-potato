@@ -18,8 +18,8 @@ export default class Aluno {
         this.movimentoTempo = 10;
         this.movimentoContador = null;
 
-        this.grabSound = new Audio('/pegar.wav')
-        this.boostSound = new Audio('/')
+        this.grabSound = new Audio('/code.wav')
+        this.boostSound = new Audio('/pegar.wav')
         this.pegarProfsSound = new Audio('/comer.wav')
 
         this.boostActivo = false;
@@ -31,7 +31,7 @@ export default class Aluno {
 
 
         this.alunoRotaçaoNormal = this.Rotaçao.drt
-        this.score = 0;
+        this.score = 0
 
 
         document.addEventListener("keydown", this.teclaPressionada)
@@ -85,7 +85,7 @@ export default class Aluno {
     }
 
     teclaPressionada = (e) => {
-        console.log(e.keyCode)
+
 
         if (e.keyCode === 38 || e.keyCode === 87) {
             if (this.agoraMovimento === Movimento.baixo) {
@@ -178,17 +178,16 @@ export default class Aluno {
     }
     apanhar() {
         if (this.mapa.apanharPonto(this.x, this.y)) {
-         //   this.grabSound.play();
+            this.grabSound.play();
             this.score += 100
-            //xsetScore(this.score);
-            console.log(this.score,)
+
         }
     }
 
     apanharPoder() {
         if (this.mapa.apanharBatata(this.x, this.y)) {
-            this.score += 500
-            //this.boostSound.play()
+            this.score += 150
+            this.boostSound.play()
             this.boostActivo = true;
             this.boostActivoAcabou = false;
             this.temporizador.forEach(tempo => clearTimeout(tempo));
@@ -219,6 +218,10 @@ export default class Aluno {
 
 
         }
+    }
+
+    setScore() {
+        return this.score
     }
 
 }
