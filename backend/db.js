@@ -19,6 +19,14 @@ async function guardarScore(user,score){
     const scores = await getMongoCollection("improved-potato","scores") //obter coleção dos scores
     return scores.insertOne({user,score})
 }
+
+
+async function atualizarScore(score){
+    const scoreAtualizado = await getMongoCollection("improved-potato", "scores")
+    return scoreAtualizado.save({score})
+}   
+
+
 /*async function savePalette(palette) {
     const collection = await getMongoCollection("Coolors", "palettes")
     const result = await collection.insertOne(palette)
@@ -31,4 +39,4 @@ async function getPaletteByCode(code) {
     return result
 }
 */
-module.exports = {guardarScore }
+module.exports = {guardarScore, atualizarScore }

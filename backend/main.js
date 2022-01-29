@@ -1,10 +1,11 @@
 const express = require('express')
-const { guardarScore } = require('./db')
+const { guardarScore, atualizarScore } = require('./db')
 const app = express()
 const port = process.env.PORT ?? 3001
+
 app.use(express.json())
 
-app.post("/user", async (req, res) => { //interface2
+/* app.post("/user", async (req, res) => { //interface2
     const sessions = await readAllSessions()
     const token = req.header("authorization");
 
@@ -51,16 +52,13 @@ app.post("/user", async (req, res) => { //interface2
         //})
     //}
 
-//})
+//}) */
 //atualizar o score
 app.patch("/user/:score", (req, res) => {
     const { user } = req.body;
     const { score } = req.params;
-    if (user && score) {
-        res.status(200).json({
-            user: score
-        })
-    }
+    res.atualizarScore(user,score)
+    
 })
 
 //para obter todos os scores - falta o score ou leaderboard no gamerender
@@ -71,16 +69,9 @@ app.patch("/user/:score", (req, res) => {
     //
 
 app.post("/score", (req, res) => {
-    const { score, user } = req.body;
-    guardarScore(user, score)
+    const { user, score } = req.body;
+   res.guardarScore(user, score) 
 })
-
-
-
-
-
-
-
 
 app.listen(port, () => console.log(`À escuta em http://localhost:${port}`))
 
