@@ -69,16 +69,16 @@ export default class Aluno {
 
     carregarImagem() {
         const alunoImagem1 = new Image();
-        alunoImagem1.src = '/main1G.png'
+        alunoImagem1.src = '/coin1.png'
 
         const alunoImagem2 = new Image();
-        alunoImagem2.src = '/main2G.png'
+        alunoImagem2.src = '/coin.png'
 
         const alunoImagem3 = new Image();
-        alunoImagem3.src = '/main3G.png'
+        alunoImagem3.src = '/coin1.png'
 
         const alunoImagem4 = new Image();
-        alunoImagem4.src = '/main1G.png'
+        alunoImagem4.src = '/coin.png'
 
         this.alunoImagens = [alunoImagem1, alunoImagem2, alunoImagem3, alunoImagem4];
         this.alunoImagensIndex = 1
@@ -125,6 +125,7 @@ export default class Aluno {
             if (Number.isInteger(this.x / this.tamanho) && Number.isInteger(this.y / this.tamanho)) {
                 if (!this.mapa.verificarColisao(this.x, this.y, this.pedirMovimento)) {
                     this.agoraMovimento = this.pedirMovimento
+
                 }
             }
         }

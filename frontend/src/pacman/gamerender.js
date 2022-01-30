@@ -41,7 +41,7 @@ export default function GameRender() {
             [1, 0, 3, 1, 3, 0, 3, 0, 3, 0, 3, 1, 3, 3, 3, 0, 3, 0, 3, 1, 3, 0, 1],
             [1, 3, 0, 1, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 1, 0, 3, 1],
             [1, 0, 3, 1, 3, 0, 3, 0, 3, 0, 1, 5, 1, 0, 3, 0, 3, 0, 3, 1, 3, 0, 1],
-            [1, 3, 0, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 3, 1],
+            [1, 3, 0, 1, 0, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 0, 1, 0, 3, 1],
             [1, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 1],
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         ] //mapa do nível arcade
@@ -121,20 +121,15 @@ export default function GameRender() {
 
 
 
-                    contexto.font = "16px Arial";
                     contexto.fillStyle = "#0095DD";
-                    contexto.fillText("Score: " + pontos, 8, 20);
-                    //contexto.fillStyle = "black";
-                    //contexto.fillRect(0, canvas.height / 3.2, canvas.width, 80);
+                    contexto.fillStyle = "black";
+                    contexto.fillRect(0, canvas.height / 3.2, canvas.width, 80);
 
-                    //contexto.font = "80 px comic sans";
-                    //const gradient = contexto.createLinearGradient(0, 0, canvas.width, 0)
-                    //gradient.addColorStop('0', 'magenta')
-                    //gradient.addColorStop('0.5', 'blue')
-                    //gradient.addColorStop('1.0', 'red')
+                    contexto.font = "80 px comic sans";
+                    contexto.fillText(text, 65, 60, 10000)
 
-                    // contexto.fillStyle = gradient;
-                    // contexto.fillText(text, 10, 10)
+
+
                     //fillText(text, 10, canvas.height / 2)
                 }
             }
@@ -154,18 +149,15 @@ export default function GameRender() {
     let navigate = useNavigate();
     return (
 
-        <div>gi
+        <div>
             <h1>BYTES4FUN</h1>
-            <div>
-                <a onClick={() => som ? audio.play() : audio.pause()} >{<img onClick={() => setSom((s) => !s)} src={som ? "https://img.icons8.com/ios-filled/50/000000/mute--v1.png" : "https://img.icons8.com/ios-filled/50/000000/room-sound.png"}></img>}</a>
-            </div>
-
             <div className="score">
                 Score
                 <div>{pontos}</div>
             </div>
-
             <canvas ref={jogo}></canvas>
+            <a id="som" onClick={() => som ? audio.play() : audio.pause()} >{<img onClick={() => setSom((s) => !s)} src={som ? "https://img.icons8.com/ios-filled/50/000000/mute--v1.png" : "https://img.icons8.com/ios-filled/50/000000/room-sound.png"}></img>}</a>
+
         </div>
 
 
