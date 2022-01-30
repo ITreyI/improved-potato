@@ -5,6 +5,7 @@
 canvas {
     box-shadow: 10px 10px 20px black;
     width: 30%;
+    left:200px;
    
 }
   
@@ -13,17 +14,12 @@ canvas {
     font-size: 30px;
   }
 
-  .soundIcon{
-    height:20px;
-   left:10px;
-    top:20px;
-    position: right;
-  }
 
- .quadroJogo{
-   position: center;
-   top: 30px;
- }
+  #soundicon{
+    position: fixed;
+       top: 20px;
+       left: 20px;
+   }
 
  h1{
    font-size: 20px;
@@ -32,4 +28,22 @@ canvas {
  .score{
     width:220px;
     float: right;
+ }
+
+ #imagem{
+   position: relative;
+   top: 100px;
+   left: 5px;
+   width: 5px;
+   height: 5px;
+   image-rendering: 1px;
+ }
+
+ #guia{
+   
+  position:relative;
+     top: 10px;
+     left: 2px;
+  width:20%;
+ 
  }

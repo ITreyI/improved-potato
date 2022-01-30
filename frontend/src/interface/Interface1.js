@@ -14,12 +14,12 @@ export default function Homepage() {
         <div>
 
             <audio ref={player} className="soundicon" src="/sounds/mixkit-arcade-retro-background-219.wav"></audio>
-            <div>
+            <div id='soundicon'>
                 <a   onClick={() => !som ? audio.play() : audio.pause()} >{<img onClick={() => setSom((s) => !s)} src={som ? "https://img.icons8.com/ios-filled/50/000000/room-sound.png" : "https://img.icons8.com/ios-filled/50/000000/mute--v1.png"}></img>}</a>
 
             </div>
             <h1>BYTES4FUN</h1>
-            <video top="500" height="200" width="1000" className="divVideo" loop autoPlay="autoplay" muted src="video1.mp4" type="video/mp4">
+            <video  className="video"  loop autoPlay="autoplay" muted src="video1.mp4" type="video/mp4">
            
             </video> 
           
@@ -32,7 +32,7 @@ export default function Homepage() {
                 </button>
     
         <div >
-       <div   className="creditos">Desenvolvido por Ana Rita Dias, Luis Ialá e Tiago Monteiro.</div> 
+       <div   className="creditos">Desenvolvido por Ana Rita Dias, Luis Iala e Tiago Monteiro.</div> 
         </div>
         </div>
 

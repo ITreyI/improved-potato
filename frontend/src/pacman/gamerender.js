@@ -113,8 +113,6 @@ export default function GameRender({ user }) {
                 if (gameOver) {
                     text = "Perdeu";
 
-               
-
                     contexto.font = "16px Arial";
                     contexto.fillStyle = "#0095DD";
                     contexto.fillText("Score: "+ pontos, 8, 20);
@@ -143,18 +141,24 @@ export default function GameRender({ user }) {
 
 
 
-    //let navigate = useNavigate();
+    let navigate = useNavigate();
     return (
 
         <div>
             <h1>BYTES4FUN</h1>
-            <div>
+            <div id="soundicon">
                 <a onClick={() => som ? audio.play() : audio.pause()} >{<img onClick={() => setSom((s) => !s)} src={som ? "https://img.icons8.com/ios-filled/50/000000/mute--v1.png" : "https://img.icons8.com/ios-filled/50/000000/room-sound.png"}></img>}</a>
             </div>
             <div className="score">Score
                 <div>{pontos}</div>
             </div>
-
+            <div id="guia">
+            <img onClick={()=> navigate('/guia')} width="70px" src={"/4269702.png"}/>
+            </div>
+            < div id="imagem"> 
+            <img   src={"/png-transparent-arrow-keys-computer-icons-computer-mouse-computer-keyboard-arrow-angle-text-computer-keyboard-thumbnail-removebg-preview.jpg"}/>
+           </div>
+           
             <canvas ref={jogo}></canvas>
         </div>
 

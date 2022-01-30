@@ -186,12 +186,13 @@ export default class Aluno {
 
     apanharPoder() {
         if (this.mapa.apanharBatata(this.x, this.y)) {
-            this.score += 150
+            this.score += 150 //setScore
             this.boostSound.play()
             this.boostActivo = true;
             this.boostActivoAcabou = false;
             this.temporizador.forEach(tempo => clearTimeout(tempo));
             this.temporizador = [];
+
 
             let boostActivoTemporizador = setTimeout(() => {
                 this.boostActivo = false;
@@ -206,6 +207,10 @@ export default class Aluno {
 
             this.temporizador.push(boostActivoAcabouTemporizador)
         }
+
+        //this.setScore(() => score  )
+        
+        
     }
 
     pegarProfs(profs) {

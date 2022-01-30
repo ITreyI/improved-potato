@@ -19,7 +19,7 @@ export default function Guia() {
                 <li>O PacMan ganha 100 pontos por cada 0 e 500 pontos por cada </li>
             </ul>
             
-         <button onClick={() => navigate(`/menu2`)}>X</button>
+         <button onClick={() => navigate(`/jogo`)}>X</button>
 
 
         </div>

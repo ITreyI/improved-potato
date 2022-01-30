@@ -28,7 +28,7 @@ export default function Interface2({ user, setUser }) { //{user,setUser}
                 <input placeholder="Insira o seu nome de jogador ..." type="text" className="caixa"></input>
                
                 
-                <button className="entrar-pushable" role="button" onClick={() => handleClick(navigate(`/Menu2`))}>
+                <button className="entrar-pushable" role="button" onClick={() => handleClick(navigate(`/contador`))}>
                     <span className="entrar-shadow"></span>
                     <span className="entrar-edge"></span>
                     <span className="entrar-front text">

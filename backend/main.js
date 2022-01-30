@@ -28,10 +28,10 @@ app.use(express.json())
 })
 //gamereder.js
 //score
-//app.get("/user/:score", async (req, res) => {
-  //  const score = await AssociaUserAoScore() // este await é q faz a asociação do fetch através da função noutros ficheiros?
+app.get("/user/:score", async (req, res) => {
+ const score = await AssociaUserAoScore() // este await é q faz a asociação do fetch através da função noutros ficheiros?
 
-    //const { user, score } = req.params
+ const { user, score } = req.params
 
     //const token = req.header("authorization");
 
