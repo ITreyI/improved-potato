@@ -16,7 +16,7 @@ export default function Guia() {
                 <li >O objetivo é que o PacMan coma o maior número de bits (8) sem ser apanhado pelos professores</li>
                 <li>Quando come o bit 0 três vezes perde</li>
                 <li>Quando o PacMan chega aos 8 números 1 comidos, completa 1 byte e ganha!</li>
-                
+                <li>O PacMan ganha 100 pontos por cada 0 e 500 pontos por cada </li>
             </ul>
             
          <button onClick={() => navigate(`/menu2`)}>X</button>

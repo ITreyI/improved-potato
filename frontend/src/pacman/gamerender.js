@@ -13,6 +13,9 @@ export default function GameRender() {
     let player = useRef(null)
     const jogo = useRef()
 
+
+
+
     useEffect(() => {
 
 
@@ -47,23 +50,23 @@ export default function GameRender() {
         const mapaDoNivel2 = [[1, 1, 1][1, 5, 1]] //mapa nível 2 teste
         const mapa = new Mapa(tamanho, mapaDoNivel1); //fecho do mapa
 
-        const aluno = mapa.getAluno(velocidade) //
-        const profs = mapa.getProfs(velocidade);
+        const aluno = mapa.getAluno(velocidade) //chama o aluno
+        const profs = mapa.getProfs(velocidade); //chama o professor
 
-        let gameOver = false;
-        let vitoria = false;
+        let gameOver = false; //boolean da  derrota
+        let vitoria = false;//boolean da vitória
 
 
 
-        const gameOverSound = new Audio("/Death.wav")
-        const vitoriaSound = new Audio("/win.wav")
+        const gameOverSound = new Audio("/Death.wav") //áudio do fim de jogo
+        const vitoriaSound = new Audio("/win.wav") // áudio da vitória
 
         // contexto.beginPath();
         // contexto.arc(100, 75, 50, 0, 2 * Math.PI);
         // contexto.stroke();
 
 
-        function gameLoop() {
+        function gameLoop() { //callback do jogo
             mapa.draw(contexto);
             desenharFinal();
             aluno.draw(contexto, pause(), profs)
@@ -82,11 +85,11 @@ export default function GameRender() {
 
 
 
-        function verificarGameOver() {
+        function verificarGameOver() { //verifica se o jogo já terminou
             if (!gameOver) {
                 gameOver = eGameOver();
                 if (gameOver) {
-                    EnviaScoreBackend()
+                    EnviaScoreBackend() //erro, linha 162
                     gameOverSound.play()
                 }
             }
@@ -116,21 +119,24 @@ export default function GameRender() {
                 if (gameOver) {
                     text = "Perdeu";
 
+
+
+                    contexto.font = "16px Arial";
+                    contexto.fillStyle = "#0095DD";
+                    contexto.fillText("Score: " + pontos, 8, 20);
+                    //contexto.fillStyle = "black";
+                    //contexto.fillRect(0, canvas.height / 3.2, canvas.width, 80);
+
+                    //contexto.font = "80 px comic sans";
+                    //const gradient = contexto.createLinearGradient(0, 0, canvas.width, 0)
+                    //gradient.addColorStop('0', 'magenta')
+                    //gradient.addColorStop('0.5', 'blue')
+                    //gradient.addColorStop('1.0', 'red')
+
+                    // contexto.fillStyle = gradient;
+                    // contexto.fillText(text, 10, 10)
+                    //fillText(text, 10, canvas.height / 2)
                 }
-
-
-                contexto.fillStyle = "black";
-                contexto.fillRect(0, canvas.height / 3.2, canvas.width, 80);
-
-                contexto.font = "80 px comic sans";
-                const gradient = contexto.createLinearGradient(0, 0, canvas.width, 0)
-                gradient.addColorStop('0', 'magenta')
-                gradient.addColorStop('0.5', 'blue')
-                gradient.addColorStop('1.0', 'red')
-
-                contexto.fillStyle = gradient;
-                // contexto.fillText(text, 10, 10)
-                //fillText(text, 10, canvas.height / 2)
             }
         }
 
@@ -148,7 +154,7 @@ export default function GameRender() {
     let navigate = useNavigate();
     return (
 
-        <div>
+        <div>gi
             <h1>BYTES4FUN</h1>
             <div>
                 <a onClick={() => som ? audio.play() : audio.pause()} >{<img onClick={() => setSom((s) => !s)} src={som ? "https://img.icons8.com/ios-filled/50/000000/mute--v1.png" : "https://img.icons8.com/ios-filled/50/000000/room-sound.png"}></img>}</a>
