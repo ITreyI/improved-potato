@@ -4,9 +4,7 @@ import './jogo.css'
 import { Routes, Route, Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-
-
-export default function GameRender({ user }) {
+export default function GameRender() {
     const [som, setSom] = useState(true)
     const [audio, setAudio] = useState(new Audio("/game.mp3"))
     const [pontos, setPontos] = useState(0)
@@ -25,25 +23,26 @@ export default function GameRender({ user }) {
         const velocidade = 1; //velocidade do jogo
         const canvas = jogo.current //renderização do jogo
         const contexto = canvas.getContext('2d'); //desenha no canvas em 2D
+        let bananas;
         const mapaDoNivel1 = [
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            [1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1],
-            [1, 3, 3, 1, 3, 1, 1, 1, 1, 1, 3, 3, 3, 1, 1, 1, 1, 1, 3, 1, 3, 3, 1],
-            [1, 3, 0, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 3, 3, 1],
-            [1, 3, 3, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 3, 3, 1],
-            [1, 3, 3, 1, 3, 3, 1, 3, 3, 1, 3, 9, 3, 1, 3, 3, 1, 3, 3, 1, 3, 3, 1],
-            [1, 3, 3, 1, 3, 3, 1, 3, 3, 1, 8, 3, 4, 1, 3, 3, 1, 3, 3, 1, 3, 3, 1],
-            [1, 3, 3, 1, 3, 3, 1, 3, 3, 1, 1, 1, 1, 1, 3, 3, 1, 3, 3, 1, 3, 3, 1],
-            [1, 3, 3, 3, 3, 3, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 3, 3, 3, 3, 3, 1],
-            [1, 3, 3, 3, 3, 3, 1, 3, 3, 3, 3, 1, 3, 3, 3, 3, 1, 3, 3, 3, 3, 3, 1],
-            [1, 3, 3, 7, 3, 3, 1, 3, 1, 1, 3, 1, 3, 1, 1, 3, 1, 3, 3, 7, 3, 3, 1],
-            [1, 3, 3, 3, 3, 3, 1, 3, 1, 1, 0, 1, 0, 1, 1, 3, 1, 3, 3, 3, 3, 3, 1],
-            [1, 3, 3, 1, 3, 3, 1, 3, 3, 3, 3, 1, 3, 3, 3, 3, 1, 3, 3, 1, 3, 3, 1],
-            [1, 3, 3, 1, 3, 3, 3, 3, 3, 3, 3, 1, 3, 3, 3, 3, 3, 3, 3, 1, 3, 3, 1],
-            [1, 3, 3, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1, 3, 3, 1],
-            [1, 3, 3, 1, 3, 3, 3, 3, 3, 3, 1, 5, 1, 3, 3, 3, 3, 3, 3, 1, 3, 3, 1],
-            [1, 3, 3, 1, 3, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 3, 1, 3, 3, 1],
-            [1, 3, 3, 3, 3, 3, 3, 3, 0, 3, 0, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 1],
+            [1, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 1],
+            [1, 3, 0, 1, 0, 1, 1, 1, 1, 1, 0, 3, 0, 1, 1, 1, 1, 1, 0, 1, 0, 3, 1],
+            [1, 0, 3, 1, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 1, 3, 0, 1],
+            [1, 3, 0, 1, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 1, 0, 3, 1],
+            [1, 0, 3, 1, 3, 0, 1, 0, 3, 1, 3, 9, 3, 1, 3, 0, 1, 0, 3, 1, 3, 0, 1],
+            [1, 3, 0, 1, 0, 3, 1, 3, 0, 1, 8, 3, 4, 1, 0, 3, 1, 3, 0, 1, 0, 3, 1],
+            [1, 0, 3, 1, 3, 0, 1, 0, 3, 1, 1, 1, 1, 1, 3, 0, 1, 0, 3, 1, 3, 0, 1],
+            [1, 3, 0, 3, 0, 3, 1, 3, 0, 3, 0, 3, 0, 3, 0, 3, 1, 3, 0, 3, 0, 3, 1],
+            [1, 0, 3, 0, 3, 0, 1, 0, 3, 0, 3, 1, 3, 0, 3, 0, 1, 0, 3, 0, 3, 0, 1],
+            [1, 3, 0, 7, 0, 3, 1, 3, 1, 1, 0, 1, 0, 1, 1, 3, 1, 3, 0, 7, 0, 3, 1],
+            [1, 0, 3, 0, 3, 0, 1, 0, 1, 1, 3, 1, 3, 1, 1, 0, 1, 0, 3, 0, 3, 0, 1],
+            [1, 3, 0, 1, 0, 3, 1, 3, 0, 3, 0, 1, 0, 3, 0, 3, 1, 3, 0, 1, 0, 3, 1],
+            [1, 0, 3, 1, 3, 0, 3, 0, 3, 0, 3, 1, 3, 3, 3, 0, 3, 0, 3, 1, 3, 0, 1],
+            [1, 3, 0, 1, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 1, 0, 3, 1],
+            [1, 0, 3, 1, 3, 0, 3, 0, 3, 0, 1, 5, 1, 0, 3, 0, 3, 0, 3, 1, 3, 0, 1],
+            [1, 3, 0, 1, 0, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 0, 1, 0, 3, 1],
+            [1, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 1],
             [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         ] //mapa do nível arcade
 
@@ -74,7 +73,14 @@ export default function GameRender({ user }) {
             profs.forEach(prof => prof.draw(contexto, pause(), aluno))
             verificarGameOver();
             verificarVitoria();
-            setPontos();
+            dizOsPontos();
+        }
+
+        function dizOsPontos() {
+            bananas = aluno.setScore()
+            console.log(bananas)
+            return bananas
+
         }
 
 
@@ -89,7 +95,7 @@ export default function GameRender({ user }) {
             }
         }
 
-        setPontos(pontos, aluno.setScore()) 
+        let a = aluno.setScore()
 
         function verificarVitoria() {
             if (!vitoria) {
@@ -114,21 +120,20 @@ export default function GameRender({ user }) {
                     text = "Perdeu";
 
                     contexto.font = "16px Arial";
+
+
                     contexto.fillStyle = "#0095DD";
-                    contexto.fillText("Score: "+ pontos, 8, 20);
-                //contexto.fillStyle = "black";
-                //contexto.fillRect(0, canvas.height / 3.2, canvas.width, 80);
+                    contexto.fillStyle = "black";
+                    contexto.fillRect(0, canvas.height / 3.2, canvas.width, 80);
 
-                //contexto.font = "80 px comic sans";
-                //const gradient = contexto.createLinearGradient(0, 0, canvas.width, 0)
-                //gradient.addColorStop('0', 'magenta')
-                //gradient.addColorStop('0.5', 'blue')
-                //gradient.addColorStop('1.0', 'red')
+                    contexto.font = "80 px comic sans";
+                    contexto.fillText(text, 65, 60, 10000)
 
-               // contexto.fillStyle = gradient;
-                // contexto.fillText(text, 10, 10)
-                //fillText(text, 10, canvas.height / 2)
-            } }
+
+
+                    //fillText(text, 10, canvas.height / 2)
+                }
+            }
         }
 
 
@@ -138,6 +143,7 @@ export default function GameRender({ user }) {
         setInterval(gameLoop, 1000 / 75)
 
     }, [])
+
 
 
 
@@ -159,7 +165,13 @@ export default function GameRender({ user }) {
             <img   src={"/png-transparent-arrow-keys-computer-icons-computer-mouse-computer-keyboard-arrow-angle-text-computer-keyboard-thumbnail-removebg-preview.jpg"}/>
            </div>
            
+            <div className="score">
+                Score
+                <div>{pontos}</div>
+            </div>
             <canvas ref={jogo}></canvas>
+            <a id="som" onClick={() => som ? audio.play() : audio.pause()} >{<img onClick={() => setSom((s) => !s)} src={som ? "https://img.icons8.com/ios-filled/50/000000/mute--v1.png" : "https://img.icons8.com/ios-filled/50/000000/room-sound.png"}></img>}</a>
+
         </div>
 
 
