@@ -32,7 +32,7 @@ export default function Homepage() {
                 </button>
     
         <div >
-       <div   className='creditos'>Desenvolvido por Ana Rita Dias, Luis Ialá e Tiago Monteiro.</div> 
+       <div   className="creditos">Desenvolvido por Ana Rita Dias, Luis Ialá e Tiago Monteiro.</div> 
         </div>
         </div>
 

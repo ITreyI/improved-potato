@@ -4,6 +4,8 @@ import './jogo.css'
 import { Routes, Route, Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
+
+
 export default function GameRender({ user }) {
     const [som, setSom] = useState(true)
     const [audio, setAudio] = useState(new Audio("/game.mp3"))
@@ -12,6 +14,9 @@ export default function GameRender({ user }) {
     //const SKORE= EnviaScoreBackend()
     let player = useRef(null)
     const jogo = useRef()
+
+
+
 
     useEffect(() => {
 
@@ -46,23 +51,23 @@ export default function GameRender({ user }) {
         const mapaDoNivel2 = [[1, 1, 1][1, 5, 1]] //mapa nível 2 teste
         const mapa = new Mapa(tamanho, mapaDoNivel1); //fecho do mapa
 
-        const aluno = mapa.getAluno(velocidade) //
-        const profs = mapa.getProfs(velocidade);
+        const aluno = mapa.getAluno(velocidade) //chama o aluno
+        const profs = mapa.getProfs(velocidade); //chama o professor
 
-        let gameOver = false;
-        let vitoria = false;
+        let gameOver = false; //boolean da  derrota
+        let vitoria = false;//boolean da vitória
 
 
 
-        const gameOverSound = new Audio("/Death.wav")
-        const vitoriaSound = new Audio("/win.wav")
+        const gameOverSound = new Audio("/Death.wav") //áudio do fim de jogo
+        const vitoriaSound = new Audio("/win.wav") // áudio da vitória
 
         // contexto.beginPath();
         // contexto.arc(100, 75, 50, 0, 2 * Math.PI);
         // contexto.stroke();
 
 
-        function gameLoop() {
+        function gameLoop() { //callback do jogo
             mapa.draw(contexto);
             desenharFinal();
             aluno.draw(contexto, pause(), profs)
@@ -74,17 +79,17 @@ export default function GameRender({ user }) {
 
 
 
-        function verificarGameOver() {
+        function verificarGameOver() { //verifica se o jogo já terminou
             if (!gameOver) {
                 gameOver = eGameOver();
                 if (gameOver) {
-                    EnviaScoreBackend()
+                    EnviaScoreBackend() //erro, linha 162
                     gameOverSound.play()
                 }
             }
         }
 
-        setPontos(pontos, aluno.setScore())
+        setPontos(pontos, aluno.setScore()) 
 
         function verificarVitoria() {
             if (!vitoria) {
@@ -108,22 +113,24 @@ export default function GameRender({ user }) {
                 if (gameOver) {
                     text = "Perdeu";
 
-                }
+               
 
+                    contexto.font = "16px Arial";
+                    contexto.fillStyle = "#0095DD";
+                    contexto.fillText("Score: "+ pontos, 8, 20);
+                //contexto.fillStyle = "black";
+                //contexto.fillRect(0, canvas.height / 3.2, canvas.width, 80);
 
-                contexto.fillStyle = "black";
-                contexto.fillRect(0, canvas.height / 3.2, canvas.width, 80);
+                //contexto.font = "80 px comic sans";
+                //const gradient = contexto.createLinearGradient(0, 0, canvas.width, 0)
+                //gradient.addColorStop('0', 'magenta')
+                //gradient.addColorStop('0.5', 'blue')
+                //gradient.addColorStop('1.0', 'red')
 
-                contexto.font = "80 px comic sans";
-                const gradient = contexto.createLinearGradient(0, 0, canvas.width, 0)
-                gradient.addColorStop('0', 'magenta')
-                gradient.addColorStop('0.5', 'blue')
-                gradient.addColorStop('1.0', 'red')
-
-                contexto.fillStyle = gradient;
+               // contexto.fillStyle = gradient;
                 // contexto.fillText(text, 10, 10)
                 //fillText(text, 10, canvas.height / 2)
-            }
+            } }
         }
 
 
@@ -136,7 +143,7 @@ export default function GameRender({ user }) {
 
 
 
-    let navigate = useNavigate();
+    //let navigate = useNavigate();
     return (
 
         <div>
