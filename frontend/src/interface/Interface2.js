@@ -16,33 +16,21 @@ export default function Interface2({ user, setUser }) { //{user,setUser}
 
         <div>
             <div >
-                <h1 className="main">BYTES4FUN</h1>
+                <h1>BYTES4FUN</h1>
                 <form method="POST" action="/jogo">
 
-<<<<<<< HEAD
-                <input placeholder="Insira o seu nome de jogador ..." type="text" className="caixa"></input>
-               
                 
-                <button className="entrar-pushable" role="button" onClick={() => handleClick(navigate(`/contador`))}>
-                    <span className="entrar-shadow"></span>
-                    <span className="entrar-edge"></span>
-                    <span className="entrar-front text">
-                        Entrar
-                    </span>
-                </button>
-=======
-                    <input placeholder="Insira o seu nome de jogador ..." type="text" name="user_input" className="caixa" id="user_input"></input>
+                    <input placeholder="Insert your player name" type="text" name="user_input" className="caixa" id="user_input"></input>
 
 
-                    <button type="submit" className="entrar-pushable" role="button">
+                    <button type="submit" className="entrar-pushable" role="button"  onClick={()=> navigate('/contador')}>
                         <span className="entrar-shadow"></span>
                         <span className="entrar-edge"></span>
                         <span className="entrar-front text">
-                            Entrar
+                            Enter
                         </span>
                     </button>
                 </form>
->>>>>>> a5ceddd057186718472d07fdc2c5ba18b51299b8
             </div>
 
 

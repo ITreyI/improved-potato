@@ -5,9 +5,13 @@
 canvas {
     box-shadow: 10px 10px 20px black;
     width: 30%;
-    left:200px;
-    width: 50%;
+    left:500px;
+    width: 30%;
    
+}
+
+.jogo{
+  left:500px;
 }
   
   div {
@@ -24,27 +28,32 @@ canvas {
 
  h1{
    font-size: 20px;
+   left:200px;
  }
 
  .score{
     width:220px;
-    float: right;
+    right:200px;
+    position: fixed;
  }
 
  #imagem{
-   position: relative;
-   top: 100px;
-   left: 5px;
-   width: 5px;
-   height: 5px;
+   position: fixed;
+   top: 350px;
+   left:250px;
+   width: 30px;
    image-rendering: 1px;
+   height:33px;
+   display: flex;
+
  }
 
  #guia{
-   
-  position:relative;
-     top: 10px;
-     left: 2px;
-  width:20%;
+  top: 300px;
+  left: 257px;
+  width: 30px;
+   height:33px;
+  position:fixed;
+    display: flex;
  
  }

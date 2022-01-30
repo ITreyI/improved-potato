@@ -10,14 +10,25 @@ export default function Guia() {
     return (
         <div >
             <h3>Guia</h3>
-            <ul >
+            
+            <div>
+            <p>Our ghosts are: Fernando, Eloisa and Rafael! </p>
+            <img src={"/FerF2.png"} /> 
+            <img src={"/EliosaF3.png"} /> 
+            <img src={"/RafaF3.png"} /> 
+            </div>
+  <ul >
+           
                 
-                <li>O jogador 1 deve utilizar as setas para mover o PacMan</li>
-                <li >O objetivo é que o PacMan coma o maior número de bits (8) sem ser apanhado pelos professores</li>
-                <li>Quando come o bit 0 três vezes perde</li>
-                <li>Quando o PacMan chega aos 8 números 1 comidos, completa 1 byte e ganha!</li>
-                <li>O PacMan ganha 100 pontos por cada 0 e 500 pontos por cada </li>
+                <li>Player must use keyboard arrows to move PacMan;</li>
+                <li >The main goal is to get as much binary code (0 and 1) without getting caught by teachers;</li>
+                <li>Each code (either 0 or 1) is equal to 100 points - that you can see on the left of the game board; </li>
+                <li>When PacMan is caught, the game is over;</li>
+                <li>But when PacMan eats all of the binary code, there's a winner!</li>
+               
+
             </ul>
+           
             
          <button onClick={() => navigate(`/jogo`)}>X</button>
 

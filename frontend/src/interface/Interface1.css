@@ -20,119 +20,121 @@ h1{
 }
 
 
+
 .entrar-pushable {
-    position:relative;
-    border: none;
-    top:10px;
-    background: transparent;
-    left: 150px;
-    padding: 0;
-    cursor: pointer;
-    outline-offset: 4px;
-    transition: filter 250ms;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-  }
-  
-  .entrar-shadow {
-    position:relative;
-    top: 0px;
-    left: 150px;
-    width: 100%;
-    height: 100%;
-    border-radius: 12px;
-    background: hsl(0deg 0% 0% / 0.25);
-    will-change: transform;
-    transform: translateY(2px);
-    transition:
-      transform
-      600ms
-      cubic-bezier(.3, .7, .4, 1);
-  }
-  
-  .entrar-edge {
-    position: relative;
-    top: 0;
-    left: 150px;
-    width: 50%;
-    height: 100%;
-    border-radius: 12px;
-    background: linear-gradient(
-      to left,
-      rgb(201, 5, 5) 0%,
-      rgb(199, 7, 7) 8%,
-      rgb(163, 0, 0) 92%,
-      hsl(340deg 100% 16%) 100%
-    );
-  }
-  
+  position:relative;
+  border: none;
+  background: transparent;
+  left: 20px;
+  padding: 0;
+  cursor: pointer;
+  outline-offset: 4px;
+  transition: filter 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.entrar-shadow {
+  position: absolute;
+  top: 60px;
+  left: 20px;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: hsl(0deg 0% 0% / 0.25);
+  will-change: transform;
+  transform: translateY(2px);
+  transition:
+    transform
+    600ms
+    cubic-bezier(.3, .7, .4, 1);
+}
+
+.entrar-edge {
+  position: absolute;
+  top: 60px;
+  left: 20px;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: linear-gradient(
+    to left,
+    hsl(340deg 100% 16%) 0%,
+    hsl(340deg 100% 32%) 8%,
+    hsl(340deg 100% 32%) 92%,
+    hsl(340deg 100% 16%) 100%
+  );
+}
+
+.entrar-front {
+  display: block;
+  position: relative;
+  top: 60px;
+  left: 20px;
+  padding: 12px 27px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  color: white;
+  background: hsl(345deg 100% 47%);
+  will-change: transform;
+  transform: translateY(-4px);
+  transition:
+    transform
+    600ms
+    cubic-bezier(.3, .7, .4, 1);
+}
+
+@media (min-width: 768px) {
   .entrar-front {
-    display: block;
-    position: relative;
-    left: 150px;
-    padding: 12px 27px;
-    border-radius: 12px;
-    font-size: 1.1rem;
-    color: white;
-    background: rgb(199, 7, 7) rgb(240, 0, 0);
-    will-change: transform;
-    transform: translateY(-4px);
-    transition:
-      transform
-      600ms
-      cubic-bezier(.3, .7, .4, 1);
+    font-size: 1.25rem;
+    padding: 12px 42px;
   }
-  
-  @media (min-width: 768px) {
-    .entrar-front {
-      font-size: 1.25rem;
-      padding: 12px 42px;
-    }
-  }
-  
-  .entrar-pushable:hover {
-    filter: brightness(110%);
-  }
-  
-  .entrar-pushable:hover .entrar-front {
-    transform: translateY(-6px);
-    transition:
-      transform
-      250ms
-      cubic-bezier(.3, .7, .4, 1.5);
-  }
-  
-  .entrar-pushable:active .entrar-front {
-    transform: translateY(-2px);
-    transition: transform 34ms;
-  }
-  
-  .entrar-pushable:hover .entrar82-shadow {
-    transform: translateY(4px);
-    transition:
-      transform
-      250ms
-      cubic-bezier(.3, .7, .4, 1.5);
-  }
-  
-  .entrar-pushable:active .entrar-shadow {
-    transform: translateY(1px);
-    transition: transform 34ms;
-  }
-  
-  .entrar-pushable:focus:not(:focus-visible) {
-    outline: none;
-  }
-  
+}
+
+.entrar-pushable:hover {
+  filter: brightness(110%);
+}
+
+.entrar-pushable:hover .entrar-front {
+  transform: translateY(-6px);
+  transition:
+    transform
+    250ms
+    cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.entrar-pushable:active .entrar-front {
+  transform: translateY(-2px);
+  transition: transform 34ms;
+}
+
+.entrar-pushable:hover .entrar82-shadow {
+  transform: translateY(4px);
+  transition:
+    transform
+    250ms
+    cubic-bezier(.3, .7, .4, 1.5);
+}
+
+.entrar-pushable:active .entrar-shadow {
+  transform: translateY(1px);
+  transition: transform 34ms;
+}
+
+.entrar-pushable:focus:not(:focus-visible) {
+  outline: none;
+}
+
  .creditos{
    width: 100%;
     height: 30px;
-    position: fixed;
+    text-align:center;
     bottom: 0px;
     background-color: black;
     color: yellow;
     font-size: 15px;
+    position: fixed;
 
  }
 
@@ -141,5 +143,9 @@ h1{
    left: 300px;
    float: center;
   height: 300px;
+ }
+
+ .giticon{
+   bottom:0
  }
  

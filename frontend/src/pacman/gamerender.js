@@ -1,20 +1,16 @@
 import { useEffect, useRef, useState } from "react"
 import Mapa from "./mapa"
 import './jogo.css'
-import { Routes, Route, Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 export default function GameRender() {
     const [som, setSom] = useState(true)
-    const [audio, setAudio] = useState(new Audio("/game.mp3"))
+    const [audio, setAudio] = useState(new Audio("/sounds/pacman_beginning.wav"))
     const [pontos, setPontos] = useState(0)
 
     //const SKORE= EnviaScoreBackend()
     let player = useRef(null)
     const jogo = useRef()
-
-
-
 
     useEffect(() => {
 
@@ -77,10 +73,11 @@ export default function GameRender() {
         }
 
         function dizOsPontos() {
-            bananas = aluno.setScore()
+           // bananas = aluno.setPontos()
+           setPontos(aluno.setScore())
             console.log(bananas)
             return bananas
-
+           
         }
 
 
@@ -89,7 +86,8 @@ export default function GameRender() {
             if (!gameOver) {
                 gameOver = eGameOver();
                 if (gameOver) {
-                    EnviaScoreBackend() //erro, linha 162
+                    
+                   console.log(enviaScoreBackend() ) //erro, linha 162
                     gameOverSound.play()
                 }
             }
@@ -152,9 +150,13 @@ export default function GameRender() {
 
         <div>
             <h1>BYTES4FUN</h1>
-            <div id="soundicon">
-                <a onClick={() => som ? audio.play() : audio.pause()} >{<img onClick={() => setSom((s) => !s)} src={som ? "https://img.icons8.com/ios-filled/50/000000/mute--v1.png" : "https://img.icons8.com/ios-filled/50/000000/room-sound.png"}></img>}</a>
+           
+            <audio ref={player} className="soundicon" src="/sounds/mixkit-arcade-retro-background-219.wav"></audio>
+            <div id='soundicon'>
+                <a   onClick={() => !som ? audio.play() : audio.pause()} >{<img onClick={() => setSom((s) => !s)} src={som ? "https://img.icons8.com/ios-filled/50/000000/room-sound.png" : "https://img.icons8.com/ios-filled/50/000000/mute--v1.png"}></img>}</a>
+
             </div>
+           
             <div className="score">Score
                 <div>{pontos}</div>
             </div>
@@ -162,15 +164,11 @@ export default function GameRender() {
             <img onClick={()=> navigate('/guia')} width="70px" src={"/4269702.png"}/>
             </div>
             < div id="imagem"> 
-            <img   src={"/png-transparent-arrow-keys-computer-icons-computer-mouse-computer-keyboard-arrow-angle-text-computer-keyboard-thumbnail-removebg-preview.jpg"}/>
+            <img  src={"/png-transparent-arrow-keys-computer-icons-computer-mouse-computer-keyboard-arrow-angle-text-computer-keyboard-thumbnail-removebg-preview.jpg"}/>
            </div>
+        
+            <canvas className="jogo" ref={jogo}></canvas>
            
-            <div className="score">
-                Score
-                <div>{pontos}</div>
-            </div>
-            <canvas ref={jogo}></canvas>
-            <a id="som" onClick={() => som ? audio.play() : audio.pause()} >{<img onClick={() => setSom((s) => !s)} src={som ? "https://img.icons8.com/ios-filled/50/000000/mute--v1.png" : "https://img.icons8.com/ios-filled/50/000000/room-sound.png"}></img>}</a>
 
         </div>
 
@@ -179,7 +177,7 @@ export default function GameRender() {
 }
 
 
-async function EnviaScoreBackend(user, score) {
+async function enviaScoreBackend(user, score) {
 
     console.log("EnviaScoreBackend")
     const res = await fetch("/score", {
@@ -193,7 +191,7 @@ async function EnviaScoreBackend(user, score) {
     console.log(resJson)
 
 }
-/* function AssociaUserAoScore(user, setScore) { // ou user,score?
+function associaUserAoScore(user, setScore) { // ou user,score?
     return async function (user, score) {
         const res = await fetch("/user/:score", {
             method: "GET",
@@ -209,8 +207,8 @@ async function EnviaScoreBackend(user, score) {
 
     }
 }
-*/
-function AtualizaScore(setScore, user) {
+
+function atualizaScore(setScore, user) {
     return async function (score) {
         const res = await fetch("/user/:score", {
             method: "PATCH",
@@ -221,13 +219,12 @@ function AtualizaScore(setScore, user) {
         })
         const resJson = await res.json()
         console.log(res.json)
-        setScore(resJson.score)
-        user(resJson.user)
+      
     }
 }
 
 
-function TodosOsScores(score) {
+function todosOsScores(score) {
     return async function (score) {
         const res = await fetch("/score", {
             method: "GET",
